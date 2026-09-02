@@ -1,1 +1,144 @@
-temporary
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showroom – Multilaser Creations</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px 25px;
+      border-bottom: 1px solid #222;
+    }
+    header a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    header a:hover { color: #fff; }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 15px 0 6px;
+    }
+    .tagline {
+      color: #999;
+      font-size: 1rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .item {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .item .info {
+      padding: 14px 16px;
+    }
+    .item h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .item p {
+      color: #888;
+      font-size: 0.85rem;
+    }
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      border-top: 1px solid #222;
+      color: #555;
+      font-size: 0.85rem;
+    }
+    footer a {
+      color: #888;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">← Retour à la boutique</a>
+    <h1>Showroom</h1>
+    <div class="tagline">Quelques créations récentes</div>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+
+      <div class="item">
+        <img src="https://i.ytimg.com/vi/fntJHPcV3IU/hqdefault.jpg" alt="Orignal Fait au Québec">
+        <div class="info">
+          <h3>Orignal « Fait au Québec »</h3>
+          <p>Revalorisation / Bois récupéré</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://i.ytimg.com/vi/cxM8fogr5E8/hqdefault.jpg" alt="Création laser 12 août">
+        <div class="info">
+          <h3>Création du 12 août</h3>
+          <p>Revalorisation / Bois récupéré</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://i.ytimg.com/vi/EEkFHLT8cEE/hqdefault.jpg" alt="Création laser en direct">
+        <div class="info">
+          <h3>Création en direct</h3>
+          <p>Processus laser</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://i.ytimg.com/vi/eguHMVU5Ic4/hqdefault.jpg" alt="Laser print">
+        <div class="info">
+          <h3>Laser Print</h3>
+          <p>Démonstration</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://i.ytimg.com/vi/SuhITDhqK64/hqdefault.jpg" alt="Premiers pas">
+        <div class="info">
+          <h3>Premiers pas</h3>
+          <p>Début du projet</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/">Boutique</a>
+    <a href="https://www.youtube.com/@multilasercreations" target="_blank">YouTube</a>
+    <a href="https://www.instagram.com/multilasercreations" target="_blank">Instagram</a>
+    <a href="mailto:multilaser@faitle.net">Contact</a>
+  </footer>
+</body>
+</html>
