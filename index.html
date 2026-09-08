@@ -8,9 +8,67 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Bebas+Neue&family=Black+Ops+One&family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Karumbi&family=Lobster&family=Luckiest+Guy&family=Oswald:wght@600&family=Pacifico&family=Permanent+Marker&family=Righteous&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
 </head>
 <body>
-<script>location.replace('/showroom.html')</script>
-<p><a href="/showroom.html">Showroom</a></p>
-</body>
-</html>
+<div class="langs"><button type="button" data-lang="fr" onclick="setLang('fr')">FR</button><button type="button" data-lang="en" onclick="setLang('en')">EN</button><button type="button" data-lang="es" onclick="setLang('es')">ES</button></div>
+<div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
+<header>
+<div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
+<div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
+</header>
+<div class="container"><div class="products">
+<div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/brut_formes_v3.png" alt=""></div><div class="card-body"><h2 data-i18n="brut_t">Affiche découpée (brut)</h2><p data-i18n="brut_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">25,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('brut')" data-i18n="buy">Acheter</button></div></div>
+<div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/SOURIEZ_VOUS_ETES_FILMES.png" alt=""></div><div class="card-body"><h2 data-i18n="imp_t">Affiche imprimée + sablée + vernie</h2><p data-i18n="imp_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">35,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('imprimee')" data-i18n="buy">Acheter</button></div></div>
+<div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Bienvenue_font_freeSerif.png" alt=""></div><div class="card-body"><h2 data-i18n="att_t">Version complète avec attaches</h2><p data-i18n="att_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">40,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('complete')" data-i18n="buy">Acheter</button></div></div>
+<div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/aimants_frigo_v2.jpg" alt=""></div><div class="card-body"><h2 data-i18n="aim_t">Version complète avec aimants au néodyme</h2><p data-i18n="aim_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">40,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('aimants')" data-i18n="buy">Acheter</button></div></div>
+<div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/cafe_marie.png" alt=""></div><div class="card-body"><h2 data-i18n="sm_t">Projet sur mesure</h2><p data-i18n="sm_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price" data-i18n="sm_price">Sur soumission</div><a class="btn secondary" id="smMail" href="mailto:multilaser@faitle.net" data-i18n="contact">Contactez-nous</a></div></div>
+</div>
+<div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Frais d’envoi : Canada 18 $ / États-Unis 30 $ payés d’avance (suivi) • Ailleurs : frais confirmés par courriel avant l’envoi</div></div>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeOrder()">
+<div class="modal">
+<h3 id="mTitle">Commander</h3><div class="sub" id="mSub"></div>
+<label for="shape" data-i18n="l_shape">Forme / style</label>
+<select id="shape">
+<option value="rectangle" data-i18n="sh_rect">Rectangle</option>
+<option value="fleche-droite" data-i18n="sh_ar">Flèche droite</option>
+<option value="fleche-gauche" data-i18n="sh_al">Flèche gauche</option>
+<option value="double-fleche" data-i18n="sh_ad">Double flèche</option>
+<option value="trapeze" data-i18n="sh_tr">Trapèze / fanion</option>
+<option value="trapeze-inverse" data-i18n="sh_tri">Trapèze inversé</option>
+<option value="autre" data-i18n="sh_other">Autre</option>
+</select>
+<div id="textWrap">
+<label for="texte" data-i18n="l_text">Texte à graver</label>
+<textarea id="texte" data-i18n-placeholder="ph_text" placeholder=""></textarea>
+<label for="taille" data-i18n="l_size">Taille du texte (pas de la planche)</label>
+<select id="taille"><option value="petit" data-i18n="sz_s">Petit texte</option><option value="moyen" selected data-i18n="sz_m">Texte moyen</option><option value="grand" data-i18n="sz_l">Grand texte</option></select>
+<label for="fonte" data-i18n="l_font">Police</label>
+<select id="fonte">
+<option value="FreeSerif">FreeSerif — classique</option>
+<option value="FreeSans">FreeSans — lisible</option>
+<option value="Karumbi">Karumbi — lettre libre</option>
+<option value="Oswald">Oswald — enseigne</option>
+<option value="Cinzel">Cinzel — élégante</option>
+<option value="Dancing Script">Dancing Script — mariage</option>
+<option value="Lobster">Lobster — rétro flashy</option>
+<option value="Pacifico">Pacifico — script fun</option>
+<option value="Bebas Neue">Bebas Neue — grande enseigne</option>
+<option value="Alfa Slab One">Alfa Slab One — gras</option>
+<option value="Luckiest Guy">Luckiest Guy — cartoon</option>
+<option value="Permanent Marker">Permanent Marker — feutre</option>
+<option value="Abril Fatface">Abril Fatface — dramatique</option>
+<option value="Black Ops One">Black Ops One — stencil</option>
+<option value="Great Vibes">Great Vibes — calligraphie</option>
+<option value="Righteous">Righteous — moderne</option>
+<option value="autre" data-i18n="sh_other">Autre</option>
+</select>
+</div>
+<div class="preview-wrap"><div class="preview-label" data-i18n="preview">Aperçu</div><div class="preview-board s-rectangle t-moyen"><span id="previewText">Votre texte</span></div><div class="preview-note" data-i18n="preview_note">Aperçu indicatif.</div></div>
+<label for="ship" data-i18n="l_ship">Livraison</label>
+<select id="ship"><option value="ca" data-i18n="ship_ca">Canada</option><option value="us" data-i18n="ship_us">États-Unis</option><option value="autre" data-i18n="ship_oth">Ailleurs</option></select>
+<div class="hint" id="mHint"></div>
+<div class="row"><button class="btn secondary" type="button" onclick="closeOrder()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goPay()" data-i18n="pay">Payer</button></div>
+</div></div>
+<footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreat" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
+<script src="/shop.js"></script></body></html>
