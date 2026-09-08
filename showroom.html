@@ -18,26 +18,11 @@
       padding: 40px 20px 25px;
       border-bottom: 1px solid #222;
     }
-    header a {
-      color: #888;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
+    header a { color: #888; text-decoration: none; font-size: 0.9rem; }
     header a:hover { color: #fff; }
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin: 15px 0 6px;
-    }
-    .tagline {
-      color: #999;
-      font-size: 1rem;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px 60px;
-    }
+    h1 { font-size: 1.8rem; font-weight: 600; margin: 15px 0 6px; }
+    .tagline { color: #999; font-size: 1rem; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -49,23 +34,25 @@
       border-radius: 10px;
       overflow: hidden;
     }
+    .item .photo {
+      background: #0f0f0f;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
     .item img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 208px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       display: block;
     }
-    .item .info {
-      padding: 14px 16px;
-    }
-    .item h3 {
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-    .item p {
-      color: #888;
-      font-size: 0.85rem;
-    }
+    .item .info { padding: 14px 16px; }
+    .item h3 { font-size: 1rem; margin-bottom: 4px; }
+    .item p { color: #888; font-size: 0.85rem; }
     footer {
       text-align: center;
       padding: 25px 20px;
@@ -73,11 +60,7 @@
       color: #555;
       font-size: 0.85rem;
     }
-    footer a {
-      color: #888;
-      text-decoration: none;
-      margin: 0 10px;
-    }
+    footer a { color: #888; text-decoration: none; margin: 0 10px; }
     footer a:hover { color: #fff; }
   </style>
 </head>
@@ -85,59 +68,48 @@
   <header>
     <a href="/">← Retour à la boutique</a>
     <h1>Showroom</h1>
-    <div class="tagline">Quelques créations récentes</div>
+    <div class="tagline">Quelques créations – styles et textes mélangés</div>
   </header>
-
   <div class="container">
     <div class="grid">
-
       <div class="item">
-        <img src="https://i.ytimg.com/vi/fntJHPcV3IU/hqdefault.jpg" alt="Orignal Fait au Québec">
-        <div class="info">
-          <h3>Orignal « Fait au Québec »</h3>
-          <p>Revalorisation / Bois récupéré</p>
-        </div>
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Bienvenue_font_freeSerif.png" alt="Bienvenue"></div>
+        <div class="info"><h3>Bienvenue</h3><p>Accueil • Serif classique • Corde</p></div>
       </div>
-
       <div class="item">
-        <img src="https://i.ytimg.com/vi/cxM8fogr5E8/hqdefault.jpg" alt="Création laser 12 août">
-        <div class="info">
-          <h3>Création du 12 août</h3>
-          <p>Revalorisation / Bois récupéré</p>
-        </div>
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/L_avenir.png" alt="L'avenir"></div>
+        <div class="info"><h3>L’avenir</h3><p>Citation • Bois veiné • Forme losange</p></div>
       </div>
-
       <div class="item">
-        <img src="https://i.ytimg.com/vi/EEkFHLT8cEE/hqdefault.jpg" alt="Création laser en direct">
-        <div class="info">
-          <h3>Création en direct</h3>
-          <p>Processus laser</p>
-        </div>
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Mon_Amour_Pour_Toujours.png" alt="Mon Amour Pour Toujours"></div>
+        <div class="info"><h3>Mon Amour Pour Toujours</h3><p>Romantique • Script • Cœurs gravés</p></div>
       </div>
-
       <div class="item">
-        <img src="https://i.ytimg.com/vi/eguHMVU5Ic4/hqdefault.jpg" alt="Laser print">
-        <div class="info">
-          <h3>Laser Print</h3>
-          <p>Démonstration</p>
-        </div>
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/AttentionChienGentilProprietaireMechant.png" alt="Attention chien gentil"></div>
+        <div class="info"><h3>Attention — chien gentil</h3><p>Humour • Bois foncé • Suspendue</p></div>
       </div>
-
       <div class="item">
-        <img src="https://i.ytimg.com/vi/SuhITDhqK64/hqdefault.jpg" alt="Premiers pas">
-        <div class="info">
-          <h3>Premiers pas</h3>
-          <p>Début du projet</p>
-        </div>
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/OUVERT_font-karumbi.png" alt="OUVERT"></div>
+        <div class="info"><h3>Ouvert</h3><p>Commerce • Lettrage libre • Trapèze</p></div>
       </div>
-
+      <div class="item">
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Wifi.png" alt="Wifi"></div>
+        <div class="info"><h3>Wifi</h3><p>Pictos • Bois pâle • Suspendue</p></div>
+      </div>
+      <div class="item">
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Zone_de_Procrastination.png" alt="Zone de Procrastination"></div>
+        <div class="info"><h3>Zone de Procrastination</h3><p>Humour • Flèche • Atelier / bureau</p></div>
+      </div>
+      <div class="item">
+        <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/SOURIEZ_VOUS_ETES_FILMES.png" alt="Souriez vous êtes filmés"></div>
+        <div class="info"><h3>Souriez, vous êtes filmés</h3><p>Commerce • Gravure laser • Pin</p></div>
+      </div>
     </div>
   </div>
-
   <footer>
     <a href="/">Boutique</a>
-    <a href="https://www.youtube.com/@multilasercreations" target="_blank">YouTube</a>
-    <a href="https://www.instagram.com/multilasercreat" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.instagram.com/multilasercreat" target="_blank" rel="noopener">Instagram</a>
     <a href="mailto:multilaser@faitle.net">Contact</a>
   </footer>
 </body>
