@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci – Multilaser Creations</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0f0f0f;color:#f0f0f0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.box{max-width:460px;width:100%;background:#161616;border:1px solid #2a2a2a;border-radius:14px;padding:28px 24px;text-align:center}
+h1{font-size:1.4rem;margin-bottom:10px}
+p{color:#999;font-size:.95rem;line-height:1.5;margin-bottom:14px}
+.status{color:#8a8074;font-size:.85rem;min-height:1.2em}
+a{color:#ccc}
+.btn{display:inline-block;margin-top:10px;background:#fff;color:#111;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Merci</h1>
+  <p>Paiement reçu. On prépare ta planche — série Les parfaitement imparfaits.</p>
+  <p class="status" id="st">Envoi du fichier laser…</p>
+  <a class="btn" href="/">Retour à la boutique</a>
+</div>
+<script>
+function dataURLtoFile(dataUrl, filename){
+  if(!dataUrl) return null;
+  const parts=dataUrl.split(",");
+  const mime=(parts[0].match(/data:(.*?);/)||[])[1]||"image/png";
+  const bin=atob(parts[1]||"");
+  const arr=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
+  return new File([arr], filename, {type:mime});
+}
+async function sendPending(){
+  const st=document.getElementById("st");
+  const raw=sessionStorage.getItem("ml_pending_order");
+  if(!raw){ st.textContent="Commande déjà transmise, ou aucune commande en attente."; return; }
+  let pack;
+  try{ pack=JSON.parse(raw); }catch(e){ st.textContent="Commande illisible."; return; }
+  const d=pack.details||{};
+  const safe=(d.texte||"brut").slice(0,24).replace(/[^a-zA-Z0-9_-]+/g,"_");
+  const filename="multilaser-"+Date.now()+"-"+safe+".png";
+  const fd=new FormData();
+  fd.append("_subject", "Raster commande Multilaser – "+(d.title||""));
+  fd.append("langue", d.lang||"");
+  fd.append("produit", d.title||"");
+  fd.append("forme", d.shape||"");
+  fd.append("livraison", d.ship||"");
+  fd.append("police", d.fonte||"(aucune)");
+  fd.append("taille", d.taille||"(aucune)");
+  fd.append("texte", d.texte||"(aucun)");
+  fd.append("paiement", "stripe-ok");
+  const file=dataURLtoFile(pack.raster, filename);
+  if(file) fd.append("raster", file, filename);
+  const ctrl=new AbortController();
+  const tmo=setTimeout(function(){ ctrl.abort(); }, 8000);
+  try{
+    await fetch("https://formsubmit.co/ajax/multilaser@faitle.net", {method:"POST", body:fd, headers:{Accept:"application/json"}, signal:ctrl.signal});
+    sessionStorage.removeItem("ml_pending_order");
+    st.textContent="Fichier laser envoyé.";
+  }catch(e){
+    st.textContent="Paiement ok. Si le fichier n’arrive pas, écris à multilaser@faitle.net.";
+  }
+  clearTimeout(tmo);
+}
+sendPending();
+</script>
+</body>
+</html>
