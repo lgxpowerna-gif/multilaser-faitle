@@ -23,6 +23,44 @@
     h1 { font-size: 1.8rem; font-weight: 600; margin: 15px 0 6px; }
     .tagline { color: #999; font-size: 1rem; }
     .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .videos h2 {
+      grid-column: 1 / -1;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ccc;
+      margin-bottom: 2px;
+    }
+    .video {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .video .frame {
+      position: relative;
+      width: 100%;
+      padding-top: 177.78%;
+      background: #000;
+    }
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video p {
+      padding: 12px 14px 14px;
+      color: #888;
+      font-size: 0.85rem;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -71,6 +109,21 @@
     <div class="tagline">Quelques créations – styles et textes mélangés</div>
   </header>
   <div class="container">
+    <div class="videos">
+      <h2>L’impression en action</h2>
+      <div class="video">
+        <div class="frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/EEkFHLT8cEE" title="Création Laser en Direct" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p>Création laser en direct — l’impression se fait</p>
+      </div>
+      <div class="video">
+        <div class="frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/fntJHPcV3IU" title="Gravure Laser Orignal Fait au Québec" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p>Gravure laser Orignal « Fait au Québec »</p>
+      </div>
+    </div>
     <div class="grid">
       <div class="item">
         <div class="photo"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Bienvenue_font_freeSerif.png?v=20260908" alt="Bienvenue"></div>
