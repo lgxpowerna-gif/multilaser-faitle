@@ -3,12 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multilaser Creations – Boutique</title>
+<title>Multilaser Creations – Affiches bois recyclé | Mont-Laurier</title>
+<meta name="description" content="Affiches commerciales en bois de palettes revalorisé. Ramassage gratuit à Mont-Laurier. Commande en ligne ou sur mesure.">
 <meta name="theme-color" content="#0f0f0f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Bebas+Neue&family=Black+Ops+One&family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Karumbi&family=Lobster&family=Luckiest+Guy&family=Oswald:wght@600&family=Pacifico&family=Permanent+Marker&family=Righteous&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/shop.css">
+<style>
+.hero{max-width:1100px;margin:0 auto 28px;padding:22px 18px;border:1px solid #2a2a2a;background:#161616;text-align:center}
+.hero h1{font-family:Oswald,sans-serif;font-size:clamp(28px,5vw,44px);margin:0 0 8px;letter-spacing:.02em}
+.hero p{margin:0 0 16px;color:#c8c8c8;line-height:1.45}
+.hero .pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.hero .pill{border:1px solid #3a3a3a;padding:6px 10px;font-size:13px;color:#ddd}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.sm-form{display:grid;gap:10px;margin-top:12px}
+.sm-form input,.sm-form textarea,.sm-form select{width:100%;background:#111;color:#eee;border:1px solid #333;padding:10px;font:inherit}
+.sm-form textarea{min-height:90px}
+.ok{color:#9d9;font-size:14px;display:none}
+</style>
 </head>
 <body>
 <div class="langs"><button type="button" data-lang="fr" onclick="setLang('fr')">FR</button><button type="button" data-lang="en" onclick="setLang('en')">EN</button><button type="button" data-lang="es" onclick="setLang('es')">ES</button></div>
@@ -17,14 +30,41 @@
 <div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
 <div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
 </header>
-<div class="container"><div class="products">
+<div class="hero">
+<h1 data-i18n="hero_t">Affiches commerciales en bois recyclé</h1>
+<p data-i18n="hero_d">Série Les parfaitement imparfaits. Gravure laser à Mont-Laurier. Ramassage gratuit. Envoi Canada 18 $.</p>
+<div class="pills"><span class="pill" data-i18n="pill1">Ramassage 0 $ — Mont-Laurier</span><span class="pill" data-i18n="pill2">Sur mesure 180 $ / 280 $</span><span class="pill" data-i18n="pill3">Paiement Stripe</span></div>
+<div class="hero-actions"><a class="btn" href="#sur-mesure" data-i18n="hero_cta">Commander sur mesure</a><a class="btn secondary" href="#boutique" data-i18n="hero_shop">Voir la boutique</a></div>
+</div>
+<div class="container" id="boutique"><div class="products">
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/brut_formes_v3.png" alt=""></div><div class="card-body"><h2 data-i18n="brut_t">Affiche découpée (brut)</h2><p data-i18n="brut_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">25,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('brut')" data-i18n="buy">Acheter</button></div></div>
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/SOURIEZ_VOUS_ETES_FILMES.png" alt=""></div><div class="card-body"><h2 data-i18n="imp_t">Affiche imprimée + sablée + vernie</h2><p data-i18n="imp_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">35,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('imprimee')" data-i18n="buy">Acheter</button></div></div>
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Bienvenue_font_freeSerif.png" alt=""></div><div class="card-body"><h2 data-i18n="att_t">Version complète avec attaches</h2><p data-i18n="att_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">40,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('complete')" data-i18n="buy">Acheter</button></div></div>
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/aimants_frigo_v2.jpg" alt=""></div><div class="card-body"><h2 data-i18n="aim_t">Version complète avec aimants au néodyme</h2><p data-i18n="aim_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">40,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('aimants')" data-i18n="buy">Acheter</button></div></div>
-<div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/cafe_marie.png" alt=""></div><div class="card-body"><h2 data-i18n="sm_t">Projet sur mesure</h2><p data-i18n="sm_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price" data-i18n="sm_price">Sur soumission</div><a class="btn secondary" id="smMail" href="mailto:multilaser@faitle.net" data-i18n="contact">Contactez-nous</a></div></div>
+<div class="card" id="sur-mesure"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/cafe_marie.png" alt=""></div><div class="card-body"><h2 data-i18n="sm_t">Affiche commerciale sur mesure</h2><p data-i18n="sm_d">Petit format 180 $ • Format moyen 280 $ • Pose non incluse. Ramassage Mont-Laurier 0 $.</p><div class="price" data-i18n="sm_price">180 $ / 280 $ CAD</div>
+<form class="sm-form" action="https://formsubmit.co/multilaser@faitle.net" method="POST">
+<input type="hidden" name="_subject" value="Commande sur mesure — Multilaser">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://multilaser.faitle.net/merci.html">
+<input type="text" name="nom" required placeholder="Nom / commerce">
+<input type="email" name="email" required placeholder="Courriel">
+<input type="tel" name="tel" placeholder="Téléphone">
+<select name="format" required>
+<option value="petit-180">Petit — 180 $ CAD</option>
+<option value="moyen-280">Moyen — 280 $ CAD</option>
+<option value="soumission">Autre — soumission</option>
+</select>
+<select name="livraison" required>
+<option value="ramassage-mont-laurier">Ramassage Mont-Laurier — 0 $</option>
+<option value="envoi-canada-18">Envoi Canada — 18 $</option>
+</select>
+<textarea name="texte" required placeholder="Texte à graver + dimensions souhaitées"></textarea>
+<button class="btn" type="submit" data-i18n="sm_send">Envoyer la commande</button>
+</form>
+</div></div>
 </div>
-<div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Frais d’envoi : Canada 18 $ / États-Unis 30 $ payés d’avance (suivi) • Ailleurs : frais confirmés par courriel avant l’envoi</div></div>
+<div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada 18 $ / États-Unis 30 $ (suivi) • Ailleurs : frais confirmés par courriel</div></div>
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeOrder()">
 <div class="modal">
 <h3 id="mTitle">Commander</h3><div class="sub" id="mSub"></div>
@@ -66,9 +106,9 @@
 </div>
 <div class="preview-wrap"><div class="preview-label" data-i18n="preview">Aperçu</div><div class="preview-board s-rectangle t-moyen"><span id="previewText">Votre texte</span></div><div class="preview-note" data-i18n="preview_note">Aperçu indicatif.</div></div>
 <label for="ship" data-i18n="l_ship">Livraison</label>
-<select id="ship"><option value="ca" data-i18n="ship_ca">Canada</option><option value="us" data-i18n="ship_us">États-Unis</option><option value="autre" data-i18n="ship_oth">Ailleurs</option></select>
+<select id="ship"><option value="pickup" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option><option value="ca" data-i18n="ship_ca">Canada</option><option value="us" data-i18n="ship_us">États-Unis</option><option value="autre" data-i18n="ship_oth">Ailleurs</option></select>
 <div class="hint" id="mHint"></div>
 <div class="row"><button class="btn secondary" type="button" onclick="closeOrder()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goPay()" data-i18n="pay">Payer</button></div>
 </div></div>
-<footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreat" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
+<footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreations" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
 <script src="/shop.js"></script></body></html>
