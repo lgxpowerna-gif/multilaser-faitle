@@ -21,6 +21,15 @@
 .sm-form input,.sm-form textarea,.sm-form select{width:100%;background:#111;color:#eee;border:1px solid #333;padding:10px;font:inherit}
 .sm-form textarea{min-height:90px}
 .ok{color:#9d9;font-size:14px;display:none}
+.noel{margin-bottom:24px}
+.noel-card{display:grid;grid-template-columns:1fr 1fr;gap:20px;border:1px solid #6b1d1d;background:linear-gradient(180deg,#1d1414,#161616);padding:18px}
+.noel-img img{width:100%;display:block;border:1px solid #333}
+.noel-cap{font-size:12px;color:#999;margin-top:6px}
+.noel-tag{display:inline-block;background:#8b1e1e;color:#fff;font-size:12px;padding:3px 8px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.noel-body h2{margin:0 0 8px;font-family:Oswald,sans-serif}
+.noel-body p{color:#c8c8c8;line-height:1.45;margin:0 0 10px}
+.noel-dl{color:#f0c36b !important;font-weight:600}
+@media (max-width:760px){.noel-card{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -34,8 +43,36 @@
 <h1 data-i18n="hero_t">Affiches commerciales en bois recyclé</h1>
 <p data-i18n="hero_d">Série Les parfaitement imparfaits. Gravure laser à Mont-Laurier. Ramassage gratuit. Envoi Canada 18 $.</p>
 <div class="pills"><span class="pill" data-i18n="pill1">Ramassage 0 $ — Mont-Laurier</span><span class="pill" data-i18n="pill2">Sur mesure 180 $ / 280 $</span><span class="pill" data-i18n="pill3">Paiement Stripe</span></div>
-<div class="hero-actions"><a class="btn" href="#sur-mesure" data-i18n="hero_cta">Commander sur mesure</a><a class="btn secondary" href="#boutique" data-i18n="hero_shop">Voir la boutique</a></div>
+<div class="hero-actions"><a class="btn" href="#sur-mesure" data-i18n="hero_cta">Commander sur mesure</a><a class="btn secondary" href="#boutique" data-i18n="hero_shop">Voir la boutique</a><a class="btn" href="#noel" data-i18n="hero_noel">Boules de Noël 20 $</a></div>
 </div>
+<div class="container noel" id="noel"><div class="noel-card">
+<div class="noel-img"><img src="/img/boules-noel.jpg" alt="Motifs de boules de Noël gravées au laser" loading="lazy"><div class="noel-cap" data-i18n="noel_cap">Aperçu des motifs (rendu, pas une photo)</div></div>
+<div class="noel-body">
+<div class="noel-tag" data-i18n="noel_tag">Temps des Fêtes 2026</div>
+<h2 data-i18n="noel_t">Boules de Noël gravées — ensemble de 4</h2>
+<p data-i18n="noel_d">Gravées au laser à Mont-Laurier, motifs québécois au choix (orignal, sapins, chalet, bonhomme de neige, castor…). Nom ou date gravé au dos : sur demande, prix confirmé par courriel.</p>
+<div class="price">20,00 $ CAD</div>
+<p class="noel-dl" data-i18n="noel_dl">Commandez d'ici le 10 décembre pour le ramassage avant Noël (envoi postal : d'ici le 5 décembre).</p>
+<form class="sm-form" action="https://formsubmit.co/multilaser@faitle.net" method="POST">
+<input type="hidden" name="_subject" value="Commande boules de Noël — Multilaser">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://multilaser.faitle.net/merci.html">
+<input type="hidden" name="produit" value="Ensemble de 4 boules de Noël — 20 $">
+<input type="text" name="nom" required data-i18n-placeholder="ph_nom" placeholder="Nom">
+<input type="email" name="email" required data-i18n-placeholder="ph_email" placeholder="Courriel">
+<select name="quantite" required>
+<option value="1">1 ensemble — 20 $</option><option value="2">2 ensembles — 40 $</option><option value="3">3 ensembles — 60 $</option><option value="plus">Plus — préciser ci-dessous</option>
+</select>
+<select name="livraison" required>
+<option value="ramassage-mont-laurier" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option>
+<option value="envoi-canada-18" data-i18n="noel_ship_ca">Envoi Canada — 18 $</option>
+</select>
+<textarea name="details" data-i18n-placeholder="ph_noel" placeholder="Motifs préférés, nom/date à graver au dos (optionnel)"></textarea>
+<button class="btn" type="submit" data-i18n="noel_send">Réserver mon ensemble</button>
+<div class="hint" data-i18n="noel_pay">Aucun paiement maintenant : je vous confirme par courriel avec le lien de paiement sécurisé (ou paiement au ramassage).</div>
+</form>
+</div></div></div>
 <div class="container" id="boutique"><div class="products">
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/brut_formes_v3.png" alt=""></div><div class="card-body"><h2 data-i18n="brut_t">Affiche découpée (brut)</h2><p data-i18n="brut_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">25,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('brut')" data-i18n="buy">Acheter</button></div></div>
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/SOURIEZ_VOUS_ETES_FILMES.png" alt=""></div><div class="card-body"><h2 data-i18n="imp_t">Affiche imprimée + sablée + vernie</h2><p data-i18n="imp_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">35,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('imprimee')" data-i18n="buy">Acheter</button></div></div>
