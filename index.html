@@ -39,12 +39,6 @@
 <div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
 <div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
 </header>
-<div class="hero">
-<h1 data-i18n="hero_t">Affiches commerciales en bois recyclé</h1>
-<p data-i18n="hero_d">Série Les parfaitement imparfaits. Gravure laser à Mont-Laurier. Ramassage gratuit. Envoi Canada 18 $.</p>
-<div class="pills"><span class="pill" data-i18n="pill1">Ramassage 0 $ — Mont-Laurier</span><span class="pill" data-i18n="pill2">Sur mesure 180 $ / 280 $</span><span class="pill" data-i18n="pill3">Paiement Stripe</span></div>
-<div class="hero-actions"><a class="btn" href="#sur-mesure" data-i18n="hero_cta">Commander sur mesure</a><a class="btn secondary" href="#boutique" data-i18n="hero_shop">Voir la boutique</a><a class="btn" href="#noel" data-i18n="hero_noel">Boules de Noël 20 $</a></div>
-</div>
 <div class="container noel" id="noel"><div class="noel-card">
 <div class="noel-img"><img src="/img/boules-noel.jpg" alt="Motifs de boules de Noël gravées au laser" loading="lazy"><div class="noel-cap" data-i18n="noel_cap">Aperçu des motifs (rendu, pas une photo)</div></div>
 <div class="noel-body">
@@ -64,7 +58,7 @@
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/SOURIEZ_VOUS_ETES_FILMES.png" alt=""></div><div class="card-body"><h2 data-i18n="imp_t">Affiche imprimée + sablée + vernie</h2><p data-i18n="imp_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">35,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('imprimee')" data-i18n="buy">Acheter</button></div></div>
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/Bienvenue_font_freeSerif.png" alt=""></div><div class="card-body"><h2 data-i18n="att_t">Version complète avec attaches</h2><p data-i18n="att_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">40,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('complete')" data-i18n="buy">Acheter</button></div></div>
 <div class="card"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/aimants_frigo_v2.jpg" alt=""></div><div class="card-body"><h2 data-i18n="aim_t">Version complète avec aimants au néodyme</h2><p data-i18n="aim_d">Bois de palettes revalorisé, série Les parfaitement imparfaits.</p><div class="price">40,00 $ CAD</div><button class="btn" type="button" onclick="openOrder('aimants')" data-i18n="buy">Acheter</button></div></div>
-<div class="card" id="sur-mesure"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/cafe_marie.png" alt=""></div><div class="card-body"><h2 data-i18n="sm_t">Affiche commerciale sur mesure</h2><p data-i18n="sm_d">Petit format 180 $ • Format moyen 280 $ • Pose non incluse. Ramassage Mont-Laurier 0 $.</p><div class="price" data-i18n="sm_price">180 $ / 280 $ CAD</div>
+<div class="card" id="sur-mesure"><div class="thumb"><img src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/png/cafe_marie.png" alt=""></div><div class="card-body"><h2 data-i18n="sm_t">Affiche commerciale sur mesure</h2><p data-i18n="sm_d">Prix selon le projet, soumission par courriel. Pose non incluse. Ramassage Mont-Laurier 0 $.</p>
 <form class="sm-form" action="https://formsubmit.co/multilaser@faitle.net" method="POST">
 <input type="hidden" name="_subject" value="Commande sur mesure — Multilaser">
 <input type="hidden" name="_template" value="table">
@@ -74,8 +68,8 @@
 <input type="email" name="email" required placeholder="Courriel">
 <input type="tel" name="tel" placeholder="Téléphone">
 <select name="format" required>
-<option value="petit-180">Petit — 180 $ CAD</option>
-<option value="moyen-280">Moyen — 280 $ CAD</option>
+<option value="petit">Petit format</option>
+<option value="moyen">Format moyen</option>
 <option value="soumission">Autre — soumission</option>
 </select>
 <select name="livraison" required>
