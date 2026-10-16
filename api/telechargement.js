@@ -2,7 +2,7 @@
 // /api/telechargement?session_id=cs_...        -> page avec bouton
 // /api/telechargement?session_id=cs_...&dl=1   -> le fichier zip
 import { get } from '@vercel/blob';
-import { SESSION_RE, markerPath, page, esc } from './_commun.js';
+import { SESSION_RE, markerPath, page, esc, produits } from './_commun.js';
 
 const CONTACT = '<p>Si vous avez payé et que le problème persiste, écrivez-nous via la page Facebook MultiLaser Créations ou à partir du site, avec votre courriel de reçu Stripe.</p>';
 
@@ -14,9 +14,8 @@ async function readMarker(sessionId) {
 }
 
 export async function GET(request) {
-  const linkId = process.env.PAYMENT_LINK_ID;
-  const zipPath = process.env.ZIP_PATHNAME;
-  if (!linkId || !zipPath) return page(503, 'Service temporairement indisponible', '<p>Réessayez dans quelques minutes.</p>' + CONTACT);
+  const prods = produits();
+  if (prods.size === 0) return page(503, 'Service temporairement indisponible', '<p>Réessayez dans quelques minutes.</p>' + CONTACT);
 
   const url = new URL(request.url);
   const sid = url.searchParams.get('session_id') || '';
@@ -26,7 +25,7 @@ export async function GET(request) {
   let marker = null;
   try { marker = await readMarker(sid); } catch (e) { console.error('lecture marque echouee:', e && e.message); marker = null; }
 
-  if (!marker || marker.session !== sid || marker.payment_link !== linkId) {
+  if (!marker || marker.session !== sid || typeof marker.payment_link !== 'string' || !prods.has(marker.payment_link)) {
     const n = Math.max(0, Math.min(20, parseInt(url.searchParams.get('n') || '0', 10) || 0));
     if (n < 10) {
       const next = `/api/telechargement?session_id=${encodeURIComponent(sid)}&n=${n + 1}`;
@@ -45,6 +44,7 @@ export async function GET(request) {
 <p>Gardez cette page dans vos favoris : le lien reste valide si vous devez retélécharger. Lisez le fichier LISEZMOI_README.txt avant de couper (épaisseur, kerf, licence).</p>`);
   }
 
+  const zipPath = prods.get(marker.payment_link);
   const r = await get(zipPath, { access: 'private' });
   if (!r || r.statusCode !== 200) return page(503, 'Fichier temporairement indisponible', '<p>Réessayez dans quelques minutes.</p>' + CONTACT);
   const name = zipPath.split('/').pop();

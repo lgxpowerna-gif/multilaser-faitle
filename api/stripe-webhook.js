@@ -1,14 +1,14 @@
 // Reçoit les événements Stripe. Enregistre une marque "payé" seulement pour
-// les sessions payées du lien de paiement des fichiers numériques.
+// les sessions payées des liens de paiement des fichiers numériques.
 import { put, del } from '@vercel/blob';
-import { verifyStripeSignature, markerPath, SESSION_RE } from './_commun.js';
+import { verifyStripeSignature, markerPath, SESSION_RE, produits } from './_commun.js';
 
 const json = (status, obj) => new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
 
 export async function POST(request) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
-  const linkId = process.env.PAYMENT_LINK_ID;
-  if (!secret || !linkId) return json(503, { error: 'not configured' });
+  const prods = produits();
+  if (!secret || prods.size === 0) return json(503, { error: 'not configured' });
 
   const raw = await request.text();
   if (!verifyStripeSignature(raw, request.headers.get('stripe-signature'), secret)) {
@@ -19,7 +19,7 @@ export async function POST(request) {
 
   const s = event?.data?.object;
   if (!s || s.object !== 'checkout.session' || !SESSION_RE.test(s.id || '')) return json(200, { ignored: true });
-  if (s.payment_link !== linkId) return json(200, { ignored: 'other link' });
+  if (typeof s.payment_link !== 'string' || !prods.has(s.payment_link)) return json(200, { ignored: 'other link' });
 
   if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     if (s.payment_status !== 'paid') return json(200, { ignored: 'not paid' });

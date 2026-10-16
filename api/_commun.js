@@ -3,6 +3,19 @@ import crypto from 'node:crypto';
 
 export const SESSION_RE = /^cs_(live|test)_[A-Za-z0-9]{10,200}$/;
 
+// Produits numériques : chaque lien de paiement Stripe -> son fichier zip dans le Blob privé.
+// Paires de variables d'environnement : PAYMENT_LINK_ID + ZIP_PATHNAME (coffre),
+// PAYMENT_LINK_ID_2 + ZIP_PATHNAME_2 (présentoir 3 mm), ... jusqu'à _9.
+export function produits(env = process.env) {
+  const map = new Map();
+  for (const sfx of ['', '_2', '_3', '_4', '_5', '_6', '_7', '_8', '_9']) {
+    const link = (env['PAYMENT_LINK_ID' + sfx] || '').trim();
+    const zip = (env['ZIP_PATHNAME' + sfx] || '').trim();
+    if (/^plink_[A-Za-z0-9]{8,100}$/.test(link) && zip) map.set(link, zip);
+  }
+  return map;
+}
+
 export function markerPath(sessionId) {
   return `paid/${sessionId}.json`;
 }
