@@ -30,6 +30,21 @@
 .noel-body p{color:#c8c8c8;line-height:1.45;margin:0 0 10px}
 .noel-dl{color:#f0c36b !important;font-weight:600}
 @media (max-width:760px){.noel-card{grid-template-columns:1fr}}
+.dig{margin-top:0;padding-top:0}
+.dig-card{display:grid;grid-template-columns:1fr 1fr;gap:20px;border:1px solid #3a2a1a;background:linear-gradient(180deg,#17130f,#161616);padding:18px;border-radius:12px}
+.dig-img img{width:100%;height:auto;display:block;border:1px solid #333;background:#fff}
+.dig-cap{font-size:12px;color:#999;margin:6px 0 12px}
+.dig-thumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dig-thumbs img{aspect-ratio:4/3;object-fit:cover}
+.dig-thumbs img.dig-photo{object-fit:contain;background:#0f0f0f}
+.dig-tag{display:inline-block;background:#5a3d1e;color:#fff;font-size:12px;padding:3px 8px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.dig-body h2{margin:0 0 8px;font-family:Oswald,sans-serif}
+.dig-body p{color:#c8c8c8;line-height:1.45;margin:0 0 10px}
+.dig-body ul{margin:0 0 12px 18px;color:#c8c8c8;font-size:.92rem;line-height:1.45}
+.dig-body li{margin-bottom:4px}
+.dig-dl{color:#f0c36b !important;font-weight:600}
+.dig-lic{font-size:.85rem;color:#999 !important}
+@media (max-width:760px){.dig-card{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -82,6 +97,30 @@
 </div></div>
 </div>
 <div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada 18 $ / États-Unis 30 $ (suivi) • Ailleurs : frais confirmés par courriel</div></div>
+<div class="container dig" id="fichiers-numeriques"><div class="dig-card">
+<div class="dig-img"><img src="/img/coffre-rendu-3d.jpg?v=1" width="1200" height="900" alt="Rendu 3D du coffre en bois fait à partir des fichiers de découpe" loading="lazy"><div class="dig-cap" data-i18n="cof_cap1">Rendu 3D (à partir des fichiers)</div>
+<div class="dig-thumbs">
+<div><a href="/img/coffre-photo-reelle.jpg?v=1" target="_blank" rel="noopener"><img class="dig-photo" src="/img/coffre-photo-reelle.jpg?v=1" width="1080" height="1470" alt="Coffre fabriqué avec ces fichiers (photo réelle)" loading="lazy"></a><div class="dig-cap" data-i18n="cof_cap2">Coffre fabriqué (photo réelle)</div></div>
+<div><a href="/img/coffre-rendu-cote.jpg?v=1" target="_blank" rel="noopener"><img src="/img/coffre-rendu-cote.jpg?v=1" width="1200" height="900" alt="Rendu 3D du coffre, vue de côté" loading="lazy"></a><div class="dig-cap" data-i18n="cof_cap3">Rendu 3D – vue de côté</div></div>
+</div></div>
+<div class="dig-body">
+<div class="dig-tag" data-i18n="cof_tag">Fichier numérique</div>
+<h2 data-i18n="cof_t">Coffre en bois — fichiers de découpe laser (SVG + DXF)</h2>
+<p data-i18n="cof_d">Fichiers pour découper vous-même un coffre en bois à la découpeuse laser. Assemblage à tenons et fentes. Le couvercle pivote dans des trous de Ø 14,7 mm dans les côtés; une butée limite son ouverture. Les fentes du couvercle et de la façade donnent l’effet de planches.</p>
+<ul>
+<li data-i18n="cof_s1">Contreplaqué ou MDF de 1/4 po (6,35 mm)</li>
+<li data-i18n="cof_s2">Coffre : 6 pièces. Socle optionnel : 5 pièces de plus</li>
+<li data-i18n="cof_s3">Empreinte 350 × 400 mm. Hauteur environ 228 mm (environ 451 mm avec socle)</li>
+<li data-i18n="cof_s4">Surface laser d’au moins 350 × 400 mm</li>
+<li data-i18n="cof_s5">Assistance d’air (soufflerie) requise pour la découpe</li>
+<li data-i18n="cof_s6">Aucune compensation de kerf : faites un essai sur une retaille</li>
+</ul>
+<p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
+<p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
+<div class="price">8,00 $ CAD</div>
+<a class="btn" href="https://buy.stripe.com/5kQ8wO61U5cE7wIa2vcfK0s" data-i18n="cof_buy">Acheter le fichier — 8 $</a>
+<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
+</div></div></div>
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeOrder()">
 <div class="modal">
 <h3 id="mTitle">Commander</h3><div class="sub" id="mSub"></div>
