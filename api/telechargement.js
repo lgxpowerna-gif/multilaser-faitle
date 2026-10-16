@@ -24,7 +24,7 @@ export async function GET(request) {
   if (!SESSION_RE.test(sid)) return page(400, 'Lien de téléchargement invalide', '<p>Ce lien de téléchargement n’est pas valide.</p>' + CONTACT);
 
   let marker = null;
-  try { marker = await readMarker(sid); } catch { marker = null; }
+  try { marker = await readMarker(sid); } catch (e) { console.error('lecture marque echouee:', e && e.message); marker = null; }
 
   if (!marker || marker.session !== sid || marker.payment_link !== linkId) {
     const n = Math.max(0, Math.min(20, parseInt(url.searchParams.get('n') || '0', 10) || 0));
