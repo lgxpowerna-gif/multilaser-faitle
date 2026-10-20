@@ -52,11 +52,12 @@
 </style>
 </head>
 <body>
+<script>if(location.hash==="#fichiers-laser"||location.hash==="#fichiers-numeriques")location.replace("/fichiers.html"+location.hash);</script>
 <div class="langs"><button type="button" data-lang="fr" onclick="setLang('fr')">FR</button><button type="button" data-lang="en" onclick="setLang('en')">EN</button><button type="button" data-lang="es" onclick="setLang('es')">ES</button></div>
 <div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
 <header>
 <div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
-<div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="#produits-physiques" data-i18n="sec_phys">Créations en bois à commander</a><a href="#fichiers-laser" data-i18n="sec_dig">Fichiers de découpe laser</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
+<div class="nav"><a href="/" data-i18n="sec_phys">Créations en bois à commander</a><a href="/fichiers.html" data-i18n="sec_dig">Fichiers de découpe laser</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
 </header>
 <div class="container sec-head" id="produits-physiques"><h2 class="sec-title" data-i18n="sec_phys">Créations en bois à commander</h2></div>
 <div class="container noel" id="noel"><div class="noel-card">
@@ -114,112 +115,6 @@
 </div></div>
 </div>
 <div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada 18 $ / États-Unis 30 $ (suivi) • Ailleurs : frais confirmés par courriel</div></div>
-<div class="container sec-head" id="fichiers-laser"><h2 class="sec-title" data-i18n="sec_dig">Fichiers de découpe laser</h2></div>
-<div class="container dig" id="fichiers-numeriques"><div class="dig-card">
-<div class="dig-img"><img src="/img/coffre-rendu-3d.jpg?v=1" width="1200" height="900" alt="Rendu 3D du coffre en bois fait à partir des fichiers de découpe" loading="lazy"><div class="dig-cap" data-i18n="cof_cap1">Rendu 3D (à partir des fichiers)</div>
-<div class="dig-thumbs">
-<div><a href="/img/coffre-photo-reelle.jpg?v=1" target="_blank" rel="noopener"><img class="dig-photo" src="/img/coffre-photo-reelle.jpg?v=1" width="1080" height="1470" alt="Coffre fabriqué avec ces fichiers (photo réelle)" loading="lazy"></a><div class="dig-cap" data-i18n="cof_cap2">Coffre fabriqué (photo réelle)</div></div>
-<div><a href="/img/coffre-rendu-cote.jpg?v=1" target="_blank" rel="noopener"><img src="/img/coffre-rendu-cote.jpg?v=1" width="1200" height="900" alt="Rendu 3D du coffre, vue de côté" loading="lazy"></a><div class="dig-cap" data-i18n="cof_cap3">Rendu 3D – vue de côté</div></div>
-</div></div>
-<div class="dig-body">
-<div class="dig-tag" data-i18n="cof_tag">Fichier numérique</div>
-<h2 data-i18n="cof_t">Coffre en bois — fichiers de découpe laser (SVG + DXF)</h2>
-<p data-i18n="cof_d">Fichiers pour découper vous-même un coffre en bois à la découpeuse laser. Assemblage à tenons et fentes. Le couvercle pivote dans des trous de Ø 14,7 mm dans les côtés; une butée limite son ouverture. Les fentes du couvercle et de la façade donnent l’effet de planches.</p>
-<ul>
-<li data-i18n="cof_s1">Contreplaqué ou MDF de 1/4 po (6,35 mm)</li>
-<li data-i18n="cof_s2">Coffre : 6 pièces. Socle optionnel : 5 pièces de plus</li>
-<li data-i18n="cof_s3">Empreinte 350 × 400 mm. Hauteur environ 228 mm (environ 451 mm avec socle)</li>
-<li data-i18n="cof_s4">Surface laser d’au moins 350 × 400 mm</li>
-<li data-i18n="cof_s5">Assistance d’air (soufflerie) requise pour la découpe</li>
-<li data-i18n="cof_s6">Aucune compensation de kerf : faites un essai sur une retaille</li>
-</ul>
-<p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
-<p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
-<div class="price">8,00 $ CAD</div>
-<a class="btn" href="https://buy.stripe.com/5kQ8wO61U5cE7wIa2vcfK0s" data-i18n="cof_buy">Acheter le fichier — 8 $</a>
-<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
-</div></div>
-<div class="dig-card" id="presentoir">
-<div class="dig-img"><a href="/img/presentoir-photo-reelle.jpg?v=1" target="_blank" rel="noopener"><img class="dig-portrait" src="/img/presentoir-photo-reelle.jpg?v=1" width="1080" height="1440" alt="Trois boîtes présentoirs fabriquées avec ces fichiers (photo réelle)" loading="lazy"></a><div class="dig-cap" data-i18n="pre_cap1">Présentoirs fabriqués (photo réelle). La gravure n’est pas incluse : le dos des fichiers est uni.</div>
-<div class="dig-thumbs">
-<div><a href="/img/presentoir-rendu-3-4.jpg?v=1" target="_blank" rel="noopener"><img src="/img/presentoir-rendu-3-4.jpg?v=1" width="1400" height="1050" alt="Rendu 3D de la boîte présentoir fait à partir des fichiers" loading="lazy"></a><div class="dig-cap" data-i18n="pre_cap2">Rendu 3D (à partir des fichiers)</div></div>
-<div><a href="/img/presentoir-rendu-cote.jpg?v=1" target="_blank" rel="noopener"><img src="/img/presentoir-rendu-cote.jpg?v=1" width="1400" height="1050" alt="Rendu 3D de la boîte présentoir, vue de côté" loading="lazy"></a><div class="dig-cap" data-i18n="pre_cap3">Rendu 3D – vue de côté</div></div>
-</div></div>
-<div class="dig-body">
-<div class="dig-tag" data-i18n="cof_tag">Fichier numérique</div>
-<h2 data-i18n="pre_t">Boîte présentoir à dos incliné — fichiers de découpe laser (SVG + DXF)</h2>
-<p data-i18n="pre_d">Fichiers pour découper vous-même une boîte présentoir en bois, par exemple pour des boules de Noël. Assemblage à tenons et fentes. Le dos est incliné à 12° et reste uni, libre pour votre gravure ou votre logo.</p>
-<ul>
-<li data-i18n="pre_s1">4 versions : 1 ou 2 rangées (sans séparateur), en contreplaqué 3 mm ou 6 mm</li>
-<li data-i18n="pre_s2">5 pièces par boîte. Largeur 98 à 202 mm selon la version. Devant de 35 mm, base d’environ 242 à 248 mm</li>
-<li data-i18n="pre_s3">Dos de 281 mm (278 mm en 6 mm), qui entre sur une planche de 12 × 12 po, ou de 330 mm (surface laser d’au moins 340 × 410 mm)</li>
-<li data-i18n="pre_s4">Jeu d’environ 0,05 mm par joint déjà inclus : faites une pièce d’essai sur une retaille</li>
-<li data-i18n="pre_s5">Assistance d’air (soufflerie) recommandée pour la découpe</li>
-</ul>
-<p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
-<p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
-<div class="price">8,00 $ CAD</div>
-<a class="btn" href="https://buy.stripe.com/14AfZg0HA48A04g2A3cfK0t" data-i18n="pre_buy">Acheter le fichier — 8 $</a>
-<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
-</div></div>
-<div class="dig-card" id="sous-verres-chalet">
-<div class="dig-img"><a href="/img/sous-verres-chalet-apercu.jpg?v=1" target="_blank" rel="noopener"><img src="/img/sous-verres-chalet-apercu.jpg?v=1" width="1200" height="812" alt="Aperçu vectoriel des 6 sous-verres chalet (pas une photo)" loading="lazy"></a><div class="dig-cap" data-i18n="dig_apercu">Aperçu (à partir des fichiers, pas une photo)</div></div>
-<div class="dig-body">
-<div class="dig-tag" data-i18n="cof_tag">Fichier numérique</div>
-<h2 data-i18n="sv_t">Sous-verres « chalet » — 6 modèles à graver (SVG + DXF)</h2>
-<p data-i18n="sv_d">Fichiers pour graver et découper vous-même 6 sous-verres ronds sur le thème du chalet : « Icitte, on relaxe! », « Silence, le huard chante », « Chu ben dans l’bois », « On s’pousse au lac! », « Autour du feu, on placote » et « Pas d’réseau, pas d’stress ».</p>
-<ul>
-<li data-i18n="sv_s1">Rond, Ø 95 mm. Un fichier par modèle</li>
-<li data-i18n="sv_s2">Bois ou MDF de 3 à 6 mm</li>
-<li data-i18n="sv_s3">Calques : rouge = coupe, noir = gravure, bleu = cercle gravé</li>
-<li data-i18n="dig_paths">Texte déjà converti en tracés : aucune police à installer</li>
-<li data-i18n="dig_kerf">Aucune compensation de kerf : faites un essai sur une retaille</li>
-</ul>
-<p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
-<p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
-<div class="price">5,00 $ CAD</div>
-<a class="btn" href="https://buy.stripe.com/7sY8wOgGyawYg3edeHcfK0u" data-i18n="sv_buy">Acheter le fichier — 5 $</a>
-<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
-</div></div>
-<div class="dig-card" id="affiches-droles">
-<div class="dig-img"><a href="/img/affiches-droles-apercu.jpg?v=1" target="_blank" rel="noopener"><img src="/img/affiches-droles-apercu.jpg?v=1" width="1200" height="933" alt="Aperçu vectoriel des 6 affiches drôles (pas une photo)" loading="lazy"></a><div class="dig-cap" data-i18n="dig_apercu">Aperçu (à partir des fichiers, pas une photo)</div></div>
-<div class="dig-body">
-<div class="dig-tag" data-i18n="cof_tag">Fichier numérique</div>
-<h2 data-i18n="af_t">Affiches drôles québécoises — 6 modèles à graver (SVG + DXF)</h2>
-<p data-i18n="af_d">Fichiers pour graver et découper vous-même 6 affiches humoristiques en français québécois : « Ferme la porte, on chauffe pas le dehors! », « Pas d’chicane dans ma cabane », « Attache ta tuque avec d’la broche! », « Énerve-toi pas l’poil des jambes », « Le boss icitte, c’est le chat » et « Bienvenue! Les bottes sur le tapis ».</p>
-<ul>
-<li data-i18n="af_s1">300 × 150 mm, coins arrondis, 2 trous pour suspendre. Un fichier par modèle</li>
-<li data-i18n="af_s2">Surface laser d’au moins 300 × 150 mm. Contreplaqué ou MDF de 3 à 6 mm</li>
-<li data-i18n="af_s3">Calques : rouge = coupe, noir = gravure, bleu = cadre gravé</li>
-<li data-i18n="dig_paths">Texte déjà converti en tracés : aucune police à installer</li>
-<li data-i18n="dig_kerf">Aucune compensation de kerf : faites un essai sur une retaille</li>
-</ul>
-<p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
-<p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
-<div class="price">6,00 $ CAD</div>
-<a class="btn" href="https://buy.stripe.com/dRm14m9e68oQ3gs1vZcfK0v" data-i18n="af_buy">Acheter le fichier — 6 $</a>
-<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
-</div></div>
-<div class="dig-card" id="boules-noel-fichiers">
-<div class="dig-img"><a href="/img/boules-noel-6-apercu.jpg?v=1" target="_blank" rel="noopener"><img src="/img/boules-noel-6-apercu.jpg?v=1" width="1200" height="814" alt="Aperçu vectoriel des 6 boules de Noël (pas une photo)" loading="lazy"></a><div class="dig-cap" data-i18n="dig_apercu">Aperçu (à partir des fichiers, pas une photo)</div></div>
-<div class="dig-body">
-<div class="dig-tag" data-i18n="cof_tag">Fichier numérique</div>
-<h2 data-i18n="bn_t">Boules de Noël québécoises — 6 modèles à graver (SVG + DXF)</h2>
-<p data-i18n="bn_d">Fichiers pour graver et découper vous-même 6 boules de Noël en bois : « Pelleteux en chef », « Frette en titi, mais joyeux! », « Survivant du réveillon », « Spécialiste du déballage », « Mon sapin est croche » et « Joyeux Noël, mon p’tit flocon ».</p>
-<ul>
-<li data-i18n="bn_s1">Rond, Ø 80 mm, avec trou de suspension. Une seule couche. Un fichier par modèle</li>
-<li data-i18n="bn_s2">Conçu pour du contreplaqué de 3 mm (1/8 po)</li>
-<li data-i18n="bn_s3">Calques : rouge = coupe, noir = gravure, bleu = cercle gravé</li>
-<li data-i18n="dig_paths">Texte déjà converti en tracés : aucune police à installer</li>
-<li data-i18n="dig_kerf">Aucune compensation de kerf : faites un essai sur une retaille</li>
-</ul>
-<p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
-<p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
-<div class="price">5,00 $ CAD</div>
-<a class="btn" href="https://buy.stripe.com/14AaEW75YbB2dV6a2vcfK0w" data-i18n="bn_buy">Acheter le fichier — 5 $</a>
-<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
-</div></div>
-</div>
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeOrder()">
 <div class="modal">
 <h3 id="mTitle">Commander</h3><div class="sub" id="mSub"></div>
