@@ -47,6 +47,8 @@
 .dig-card+.dig-card{margin-top:18px}
 .dig-img img.dig-portrait{max-height:640px;object-fit:contain;background:#0f0f0f}
 @media (max-width:760px){.dig-card{grid-template-columns:1fr}}
+.sec-head{margin-top:28px;margin-bottom:12px}
+.sec-title{font-family:Oswald,sans-serif;font-size:1.8rem;margin:0;padding-bottom:8px;border-bottom:2px solid #5a3d1e}
 </style>
 </head>
 <body>
@@ -54,8 +56,9 @@
 <div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
 <header>
 <div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
-<div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
+<div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="#produits-physiques" data-i18n="sec_phys">Produits physiques à commander</a><a href="#fichiers-laser" data-i18n="sec_dig">Fichiers laser à télécharger</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
 </header>
+<div class="container sec-head" id="produits-physiques"><h2 class="sec-title" data-i18n="sec_phys">Produits physiques à commander</h2></div>
 <div class="container noel" id="noel"><div class="noel-card">
 <div class="noel-img"><img src="/img/boules-noel.jpg?v=5" alt="Motifs de boules de Noël gravées au laser" loading="lazy"><div class="noel-cap" data-i18n="noel_cap">Aperçu des motifs (rendu, pas une photo)</div></div>
 <div class="noel-body">
@@ -113,6 +116,7 @@
 </div></div>
 </div>
 <div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada 18 $ / États-Unis 30 $ (suivi) • Ailleurs : frais confirmés par courriel</div></div>
+<div class="container sec-head" id="fichiers-laser"><h2 class="sec-title" data-i18n="sec_dig">Fichiers laser à télécharger</h2></div>
 <div class="container dig" id="fichiers-numeriques"><div class="dig-card">
 <div class="dig-img"><img src="/img/coffre-rendu-3d.jpg?v=1" width="1200" height="900" alt="Rendu 3D du coffre en bois fait à partir des fichiers de découpe" loading="lazy"><div class="dig-cap" data-i18n="cof_cap1">Rendu 3D (à partir des fichiers)</div>
 <div class="dig-thumbs">
