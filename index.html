@@ -56,9 +56,9 @@
 <div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
 <header>
 <div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
-<div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="#produits-physiques" data-i18n="sec_phys">Produits physiques à commander</a><a href="#fichiers-laser" data-i18n="sec_dig">Fichiers laser à télécharger</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
+<div class="nav"><a href="/" data-i18n="nav_shop">Boutique</a><a href="#produits-physiques" data-i18n="sec_phys">Créations en bois à commander</a><a href="#fichiers-laser" data-i18n="sec_dig">Fichiers de découpe laser</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
 </header>
-<div class="container sec-head" id="produits-physiques"><h2 class="sec-title" data-i18n="sec_phys">Produits physiques à commander</h2></div>
+<div class="container sec-head" id="produits-physiques"><h2 class="sec-title" data-i18n="sec_phys">Créations en bois à commander</h2></div>
 <div class="container noel" id="noel"><div class="noel-card">
 <div class="noel-img"><img src="/img/boules-noel.jpg?v=5" alt="Motifs de boules de Noël gravées au laser" loading="lazy"><div class="noel-cap" data-i18n="noel_cap">Aperçu des motifs (rendu, pas une photo)</div></div>
 <div class="noel-body">
@@ -68,8 +68,7 @@
 <div class="price">20,00 $ CAD</div>
 <p class="noel-dl" data-i18n="noel_dl">Commandez d'ici le 10 décembre pour le ramassage avant Noël (envoi postal : d'ici le 5 décembre).</p>
 <div class="hero-actions">
-<a class="btn" href="https://buy.stripe.com/5kQ5kC0HAbB25oAgqTcfK0j">Payer 20 $ — ramassage Mont-Laurier</a>
-<a class="btn secondary" href="https://buy.stripe.com/aFafZg61U6gI6sEfmPcfK0l">Payer 25 $ — envoi Canada inclus</a>
+<button class="btn" type="button" onclick="openSimple('noel')" data-i18n="buy">Acheter</button>
 </div>
 <div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
 </div></div></div>
@@ -82,8 +81,7 @@
 <p>Dimensions : 222 × 156 × 148 mm. Fabriquée sur commande. Produit physique : ce n’est pas un fichier à télécharger.</p>
 <div class="price">45,00 $ CAD</div>
 <div class="hero-actions">
-<a class="btn" href="https://buy.stripe.com/28E8wOdum34w18k4IbcfK0x">Payer 45 $ — ramassage Mont-Laurier</a>
-<a class="btn secondary" href="https://buy.stripe.com/fZuaEW8a27kM18kb6zcfK0y">Payer 63 $ — envoi Canada inclus</a>
+<button class="btn" type="button" onclick="openSimple('boite')" data-i18n="buy">Acheter</button>
 </div>
 <div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
 </div></div></div>
@@ -116,7 +114,7 @@
 </div></div>
 </div>
 <div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada 18 $ / États-Unis 30 $ (suivi) • Ailleurs : frais confirmés par courriel</div></div>
-<div class="container sec-head" id="fichiers-laser"><h2 class="sec-title" data-i18n="sec_dig">Fichiers laser à télécharger</h2></div>
+<div class="container sec-head" id="fichiers-laser"><h2 class="sec-title" data-i18n="sec_dig">Fichiers de découpe laser</h2></div>
 <div class="container dig" id="fichiers-numeriques"><div class="dig-card">
 <div class="dig-img"><img src="/img/coffre-rendu-3d.jpg?v=1" width="1200" height="900" alt="Rendu 3D du coffre en bois fait à partir des fichiers de découpe" loading="lazy"><div class="dig-cap" data-i18n="cof_cap1">Rendu 3D (à partir des fichiers)</div>
 <div class="dig-thumbs">
@@ -157,7 +155,6 @@
 <li data-i18n="pre_s3">Dos de 281 mm (278 mm en 6 mm), qui entre sur une planche de 12 × 12 po, ou de 330 mm (surface laser d’au moins 340 × 410 mm)</li>
 <li data-i18n="pre_s4">Jeu d’environ 0,05 mm par joint déjà inclus : faites une pièce d’essai sur une retaille</li>
 <li data-i18n="pre_s5">Assistance d’air (soufflerie) recommandée pour la découpe</li>
-<li data-i18n="pre_s6">Version 3 mm coupée et assemblée en atelier</li>
 </ul>
 <p class="dig-dl" data-i18n="cof_dl">Fichier numérique – téléchargement immédiat après le paiement. Rien n’est expédié.</p>
 <p class="dig-lic" data-i18n="cof_lic">Licence : vous pouvez vendre les objets que vous fabriquez. Les fichiers ne peuvent pas être revendus ni partagés. Aucun remboursement après le téléchargement.</p>
@@ -267,6 +264,13 @@
 <select id="ship"><option value="pickup" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option><option value="ca" data-i18n="ship_ca">Canada</option><option value="us" data-i18n="ship_us">États-Unis</option><option value="autre" data-i18n="ship_oth">Ailleurs</option></select>
 <div class="hint" id="mHint"></div>
 <div class="row"><button class="btn secondary" type="button" onclick="closeOrder()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goPay()" data-i18n="pay">Payer</button></div>
+</div></div>
+<div class="overlay" id="overlay2" onclick="if(event.target===this)closeSimple()">
+<div class="modal">
+<h3 id="sTitle">Commander</h3><div class="sub" id="sSub"></div>
+<label for="ship2" data-i18n="l_ship">Livraison</label>
+<select id="ship2"></select>
+<div class="row"><button class="btn secondary" type="button" onclick="closeSimple()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goSimple()" data-i18n="pay">Payer</button></div>
 </div></div>
 <footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreat/" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
 <script src="/shop.js"></script></body></html>
