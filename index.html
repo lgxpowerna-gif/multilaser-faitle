@@ -158,6 +158,10 @@
 <label for="ship" data-i18n="l_ship">Livraison</label>
 <select id="ship"><option value="pickup" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option><option value="ca" data-i18n="ship_ca">Canada</option><option value="us" data-i18n="ship_us">États-Unis</option><option value="autre" data-i18n="ship_oth">Ailleurs</option></select>
 <div class="hint" id="mHint"></div>
+<label for="cmt" data-i18n="l_cmt">Commentaire ou question (facultatif)</label>
+<textarea id="cmt" rows="2" maxlength="500"></textarea>
+<div id="cmtMail" style="display:none"><input id="cmtEmail" type="email" data-i18n-placeholder="ph_email" placeholder="Courriel"></div>
+<div class="hint" data-i18n="cmt_note">Une commande avec un commentaire est confirmée par courriel avant le paiement.</div>
 <div class="row"><button class="btn secondary" type="button" onclick="closeOrder()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goPay()" data-i18n="pay">Payer</button></div>
 </div></div>
 <div class="overlay" id="overlay2" onclick="if(event.target===this)closeSimple()">
@@ -165,6 +169,10 @@
 <h3 id="sTitle">Commander</h3><div class="sub" id="sSub"></div>
 <label for="ship2" data-i18n="l_ship">Livraison</label>
 <select id="ship2"></select>
+<label for="cmt2" data-i18n="l_cmt">Commentaire ou question (facultatif)</label>
+<textarea id="cmt2" rows="2" maxlength="500"></textarea>
+<div id="cmtMail2" style="display:none"><input id="cmtEmail2" type="email" data-i18n-placeholder="ph_email" placeholder="Courriel"></div>
+<div class="hint" data-i18n="cmt_note">Une commande avec un commentaire est confirmée par courriel avant le paiement.</div>
 <div class="row"><button class="btn secondary" type="button" onclick="closeSimple()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goSimple()" data-i18n="pay">Payer</button></div>
 </div></div>
 <footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreat/" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
