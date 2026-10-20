@@ -26,10 +26,10 @@ document.addEventListener("click", function(e){
   if(code) setLang(code);
 });
 const PRODUCTS = {
-  brut: { titleKey:"brut_t", subKey:"brut_sub", hintKey:"brut_hint", requireText:false, stripe:{ ca:"https://buy.stripe.com/7sY5kCcqi7kM5oAfmPcfK0m", us:"https://buy.stripe.com/7sYaEW75YbB2bMY3E7cfK0n" } },
-  imprimee: { titleKey:"imp_t", subKey:"imp_sub", hintKey:"order_hint", requireText:true, stripe:{ ca:"https://buy.stripe.com/9B67sK0HA6gI3gsa2vcfK0b", us:"https://buy.stripe.com/aFabJ00HA5cEg3ecaDcfK0c" } },
-  complete: { titleKey:"att_t", subKey:"att_sub", hintKey:"order_hint", requireText:true, stripe:{ ca:"https://buy.stripe.com/fZu3cudum48A9EQb6zcfK0o", us:"https://buy.stripe.com/aFa7sKgGy5cE04g8YrcfK0r" } },
-  aimants: { titleKey:"aim_t", subKey:"aim_sub", hintKey:"order_hint", requireText:true, stripe:{ ca:"https://buy.stripe.com/28E7sK3TMeNecR22A3cfK0p", us:"https://buy.stripe.com/8x25kC0HAfRi3gsgqTcfK0q" } }
+  brut: { titleKey:"brut_t", subKey:"brut_sub", hintKey:"brut_hint", requireText:false, stripe:{ pickup:"https://buy.stripe.com/bJebJ00HAawYg3e3E7cfK0z", ca:"https://buy.stripe.com/7sY5kCcqi7kM5oAfmPcfK0m", us:"https://buy.stripe.com/7sYaEW75YbB2bMY3E7cfK0n" } },
+  imprimee: { titleKey:"imp_t", subKey:"imp_sub", hintKey:"order_hint", requireText:true, stripe:{ pickup:"https://buy.stripe.com/00w00i1LEdJa18k0rVcfK0A", ca:"https://buy.stripe.com/9B67sK0HA6gI3gsa2vcfK0b", us:"https://buy.stripe.com/aFabJ00HA5cEg3ecaDcfK0c" } },
+  complete: { titleKey:"att_t", subKey:"att_sub", hintKey:"order_hint", requireText:true, stripe:{ pickup:"https://buy.stripe.com/cNi00i1LE20s9EQfmPcfK0B", ca:"https://buy.stripe.com/fZu3cudum48A9EQb6zcfK0o", us:"https://buy.stripe.com/aFa7sKgGy5cE04g8YrcfK0r" } },
+  aimants: { titleKey:"aim_t", subKey:"aim_sub", hintKey:"order_hint", requireText:true, stripe:{ pickup:"https://buy.stripe.com/8x214m0HA20saIUcaDcfK0C", ca:"https://buy.stripe.com/28E7sK3TMeNecR22A3cfK0p", us:"https://buy.stripe.com/8x25kC0HAfRi3gsgqTcfK0q" } }
 };
 let current = "imprimee";
 function openOrder(key){
@@ -136,7 +136,6 @@ async function goPay(){
   const texte = document.getElementById("texte").value.trim();
   if(p.requireText && !texte){ alert(t("need_text")); return; }
   const details={title:t(p.titleKey), shape, ship, fonte, taille, texte, lang:lang, produit:current};
-  if(ship === "pickup"){ postPickup(details); return; }
   if(shape === "autre" || ship === "autre" || fonte === "autre"){
     postPickup(Object.assign(details,{ship:ship})); return;
   }
