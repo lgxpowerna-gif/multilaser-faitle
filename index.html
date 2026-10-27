@@ -29,6 +29,7 @@
 .noel-body h2{margin:0 0 8px;font-family:Oswald,sans-serif}
 .noel-body p{color:#c8c8c8;line-height:1.45;margin:0 0 10px}
 .noel-dl{color:#f0c36b !important;font-weight:600}
+.an-ph{display:flex;align-items:center;justify-content:center;min-height:240px;border:2px dashed #8b1e1e;background:#111;color:#f0c36b;font-weight:600;text-align:center;padding:12px}
 @media (max-width:760px){.noel-card{grid-template-columns:1fr}}
 .dig{margin-top:0;padding-top:0}
 .dig-card{display:grid;grid-template-columns:1fr 1fr;gap:20px;border:1px solid #3a2a1a;background:linear-gradient(180deg,#17130f,#161616);padding:18px;border-radius:12px}
@@ -72,6 +73,30 @@
 <button class="btn" type="button" onclick="openSimple('noel')" data-i18n="buy">Acheter</button>
 </div>
 <div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
+</div></div></div>
+<div class="container noel" id="animaux"><div class="noel-card">
+<div class="noel-img"><div class="an-ph" data-i18n="an_ph">Photo à venir</div></div>
+<div class="noel-body">
+<div class="noel-tag" data-i18n="an_tag">Temps des Fêtes 2026</div>
+<h2 data-i18n="an_t">Boules de Noël gravées — ensemble de 4 animaux</h2>
+<p data-i18n="an_d">Gravées au laser à Mont-Laurier : un orignal, un raton, un pingouin et un écureuil.</p>
+<div class="price">20,00 $ CAD</div>
+<p class="noel-dl" data-i18n="noel_dl">Commandez d'ici le 10 décembre pour le ramassage avant Noël (envoi postal : d'ici le 5 décembre).</p>
+<form class="sm-form" action="https://formsubmit.co/multilaser@faitle.net" method="POST">
+<input type="hidden" name="_subject" value="Réservation — ensemble de 4 boules animaux — Multilaser">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://multilaser.faitle.net/merci.html">
+<input type="hidden" name="produit" value="Boules de Noël — ensemble de 4 animaux (orignal, raton, pingouin, écureuil) — 20 $">
+<input type="text" name="nom" required data-i18n-placeholder="ph_nom" placeholder="Nom">
+<input type="email" name="email" required data-i18n-placeholder="ph_email" placeholder="Courriel">
+<select name="livraison" required>
+<option value="ramassage-mont-laurier" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option>
+<option value="envoi-canada-5" data-i18n="noel_ship_ca">Envoi Canada — 5 $</option>
+</select>
+<button class="btn" type="submit" data-i18n="an_send">Réserver mon ensemble</button>
+</form>
+<div class="hint" data-i18n="an_note">Réservation par courriel : on te confirme le paiement par courriel.</div>
 </div></div></div>
 <div class="container noel" id="boite-6pack"><div class="noel-card">
 <div class="noel-img"><img src="/img/boite-6pack.svg?v=1" alt="Boîte 6-pack en bois découpée au laser" loading="lazy"></div>
