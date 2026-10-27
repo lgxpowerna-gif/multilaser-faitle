@@ -29,7 +29,7 @@
 .noel-body h2{margin:0 0 8px;font-family:Oswald,sans-serif}
 .noel-body p{color:#c8c8c8;line-height:1.45;margin:0 0 10px}
 .noel-dl{color:#f0c36b !important;font-weight:600}
-.an-ph{display:flex;align-items:center;justify-content:center;min-height:240px;border:2px dashed #8b1e1e;background:#111;color:#f0c36b;font-weight:600;text-align:center;padding:12px}
+.noel-card.sans-photo{grid-template-columns:1fr}
 @media (max-width:760px){.noel-card{grid-template-columns:1fr}}
 .dig{margin-top:0;padding-top:0}
 .dig-card{display:grid;grid-template-columns:1fr 1fr;gap:20px;border:1px solid #3a2a1a;background:linear-gradient(180deg,#17130f,#161616);padding:18px;border-radius:12px}
@@ -74,8 +74,7 @@
 </div>
 <div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
 </div></div></div>
-<div class="container noel" id="animaux"><div class="noel-card">
-<div class="noel-img"><div class="an-ph" data-i18n="an_ph">Photo à venir</div></div>
+<div class="container noel" id="animaux"><div class="noel-card sans-photo">
 <div class="noel-body">
 <div class="noel-tag" data-i18n="an_tag">Temps des Fêtes 2026</div>
 <h2 data-i18n="an_t">Boules de Noël gravées — ensemble de 4 animaux</h2>
@@ -128,7 +127,7 @@
 </form>
 </div></div>
 </div>
-<div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada 18 $ / États-Unis 30 $ (suivi) • Ailleurs : frais confirmés par courriel</div></div>
+<div class="note" data-i18n="ship_note">Paiements sécurisés via Stripe • Ramassage Mont-Laurier 0 $ • Envoi Canada : boules de Noël 5 $, affiches et boîte 6-pack 18 $ (suivi) • États-Unis (affiches) 30 $ (suivi) • Gros formats, coffres : selon dimensions et poids, sur devis • Ailleurs : frais confirmés par courriel</div></div>
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeOrder()">
 <div class="modal">
 <h3 id="mTitle">Commander</h3><div class="sub" id="mSub"></div>
