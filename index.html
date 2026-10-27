@@ -82,21 +82,10 @@
 <p data-i18n="an_d">Gravées au laser à Mont-Laurier : un orignal, un raton, un pingouin et un écureuil.</p>
 <div class="price">20,00 $ CAD</div>
 <p class="noel-dl" data-i18n="noel_dl">Commandez d'ici le 10 décembre pour le ramassage avant Noël (envoi postal : d'ici le 5 décembre).</p>
-<form class="sm-form" action="https://formsubmit.co/multilaser@faitle.net" method="POST">
-<input type="hidden" name="_subject" value="Réservation — ensemble de 4 boules animaux — Multilaser">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://multilaser.faitle.net/merci.html">
-<input type="hidden" name="produit" value="Boules de Noël — ensemble de 4 animaux (orignal, raton, pingouin, écureuil) — 20 $">
-<input type="text" name="nom" required data-i18n-placeholder="ph_nom" placeholder="Nom">
-<input type="email" name="email" required data-i18n-placeholder="ph_email" placeholder="Courriel">
-<select name="livraison" required>
-<option value="ramassage-mont-laurier" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option>
-<option value="envoi-canada-5" data-i18n="noel_ship_ca">Envoi Canada — 5 $</option>
-</select>
-<button class="btn" type="submit" data-i18n="an_send">Réserver mon ensemble</button>
-</form>
-<div class="hint" data-i18n="an_note">Réservation par courriel : on te confirme le paiement par courriel.</div>
+<div class="hero-actions">
+<button class="btn" type="button" onclick="openSimple('animaux')" data-i18n="buy">Acheter</button>
+</div>
+<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
 </div></div></div>
 <div class="container noel" id="boite-6pack"><div class="noel-card">
 <div class="noel-img"><img src="/img/boite-6pack.svg?v=1" alt="Boîte 6-pack en bois découpée au laser" loading="lazy"></div>
