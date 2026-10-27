@@ -158,7 +158,7 @@ applyLang();
 
 const SIMPLE = {
   noel: { titleKey:"noel_t", price:{fr:"20,00 $ CAD",en:"$20.00 CAD",es:"20,00 $ CAD"}, opts:[["pickup","ship_pk","https://buy.stripe.com/5kQ5kC0HAbB25oAgqTcfK0j"],["ca","noel_ship_ca","https://buy.stripe.com/aFafZg61U6gI6sEfmPcfK0l"]] },
-  animaux: { titleKey:"an_t", price:{fr:"20,00 $ CAD",en:"$20.00 CAD",es:"20,00 $ CAD"}, opts:[["pickup","ship_pk","STRIPE_LIEN_RAMASSAGE_20_A_CREER"],["ca","noel_ship_ca","STRIPE_LIEN_ENVOI_CANADA_25_A_CREER"]] },
+  animaux: { titleKey:"an_t", price:{fr:"20,00 $ CAD",en:"$20.00 CAD",es:"20,00 $ CAD"}, opts:[["pickup","ship_pk","https://buy.stripe.com/14A5kC75Y5cE6sE6QjcfK0D"],["ca","noel_ship_ca","https://buy.stripe.com/dRmaEWbmegVm04g5MfcfK0E"]] },
   boite: { title:"Boîte 6-pack en bois", price:{fr:"45,00 $ CAD",en:"$45.00 CAD",es:"45,00 $ CAD"}, opts:[["pickup","ship_pk","https://buy.stripe.com/28E8wOdum34w18k4IbcfK0x"],["ca","ship_ca","https://buy.stripe.com/fZuaEW8a27kM18kb6zcfK0y"]] }
 };
 let simpleCur = "noel";
