@@ -1,69 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<title>Gnomes de Noël gravés — ensemble de 4 | Multilaser Créations</title>
-<meta name="description" content="Ensemble de 4 gnomes de Noël gravés au laser sur contreplaqué de bouleau, faits à la main à Mont-Laurier. 15 $ CAD. Local et écologique.">
-<meta name="theme-color" content="#0f0f0f">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/shop.css">
-<style>
-.noel{margin-bottom:24px}
-.noel-card{display:grid;grid-template-columns:1fr 1fr;gap:20px;border:1px solid #6b1d1d;background:linear-gradient(180deg,#1d1414,#161616);padding:18px}
-.noel-img img{width:100%;height:auto;display:block;border:1px solid #333}
-.noel-img .gn-detail{margin-top:12px}
-.noel-cap{font-size:12px;color:#999;margin-top:6px}
-.noel-tag{display:inline-block;background:#8b1e1e;color:#fff;font-size:12px;padding:3px 8px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
-.noel-body h2{margin:0 0 8px;font-family:Oswald,sans-serif}
-.noel-body p{color:#c8c8c8;line-height:1.45;margin:0 0 10px}
-.noel-dl{color:#f0c36b !important;font-weight:600}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.back{display:inline-block;margin:0 0 14px;color:#ccc;font-size:.9rem}
-@media (max-width:760px){.noel-card{grid-template-columns:1fr}}
-</style>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0;url=https://multilaser.faitle.net/ensemble-gnomes.html">
+<link rel="canonical" href="https://multilaser.faitle.net/ensemble-gnomes.html">
+<title>Gnomes de Noël gravés – ensemble de 4</title>
+<script>location.replace("https://multilaser.faitle.net/ensemble-gnomes.html");</script>
 </head>
 <body>
-<div class="langs"><button type="button" data-lang="fr" onclick="setLang('fr')">FR</button><button type="button" data-lang="en" onclick="setLang('en')">EN</button><button type="button" data-lang="es" onclick="setLang('es')">ES</button></div>
-<div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
-<header>
-<div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
-<div class="nav"><a href="/" data-i18n="sec_phys">Créations en bois à commander</a><a href="/fichiers.html" data-i18n="sec_dig">Fichiers de découpe laser</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
-</header>
-<div class="container noel" id="gnomes">
-<a class="back" href="/#gnomes" data-i18n="nav_shop">Boutique</a>
-<div class="noel-card">
-<div class="noel-img"><img src="/img/gnomes-noel.jpg?v=2" width="1200" height="1200" alt="Quatre gnomes de Noël gravés au laser, avec ficelle de jute et perles de bois" data-i18n-alt="gn_alt"><div class="noel-cap" data-i18n="gn_cap">Photo réelle</div>
-<img class="gn-detail" src="/img/gnomes-noel-bois.jpg?v=2" width="1200" height="868" alt="Deux gnomes de Noël sur bois, ficelle et deux perles" data-i18n-alt="gn_alt2" loading="lazy"><div class="noel-cap" data-i18n="gn_cap2">Détail — ficelle et deux perles de bois</div></div>
-<div class="noel-body">
-<div class="noel-tag" data-i18n="noel_tag">Temps des Fêtes 2026</div>
-<h2 data-i18n="gn_t">Gnomes de Noël gravés — ensemble de 4</h2>
-<p data-i18n="gn_d">Quatre gnomes identiques, gravés au laser sur contreplaqué de bouleau, faits à la main à Mont-Laurier. Tuque à feuille d’érable, lanterne à la main, ficelle de jute et deux perles de bois. Local et écologique : idéal pour décorer le sapin ou offrir.</p>
-<div class="price">15,00 $ CAD</div>
-<p class="noel-dl" data-i18n="noel_dl">Commandez d'ici le 10 décembre pour le ramassage avant Noël (envoi postal : d'ici le 5 décembre).</p>
-<div class="hero-actions">
-<button class="btn" type="button" onclick="openSimple('gnomes')" data-i18n="buy">Acheter</button>
-</div>
-<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
-</div></div></div>
-<div class="overlay" id="overlay2" onclick="if(event.target===this)closeSimple()">
-<div class="modal">
-<h3 id="sTitle">Commander</h3><div class="sub" id="sSub"></div>
-<label for="ship2" data-i18n="l_ship">Livraison</label>
-<select id="ship2"></select>
-<label for="cmt2" data-i18n="l_cmt">Commentaire ou question (facultatif)</label>
-<textarea id="cmt2" rows="2" maxlength="500"></textarea>
-<div id="cmtMail2" style="display:none"><input id="cmtEmail2" type="email" data-i18n-placeholder="ph_email" placeholder="Courriel"></div>
-<div class="hint" data-i18n="cmt_note">Une commande avec un commentaire est confirmée par courriel avant le paiement.</div>
-<div class="row"><button class="btn secondary" type="button" onclick="closeSimple()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goSimple()" data-i18n="pay">Payer</button></div>
-</div></div>
-<footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreat/" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
-<script src="/shop.js"></script>
+<p><a href="https://multilaser.faitle.net/ensemble-gnomes.html">Gnomes de Noël gravés – ensemble de 4</a></p>
 </body>
 </html>
