@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<title>Boules de Noël gravées – ensemble de 4 expressions | Multilaser Créations</title>
+<meta name="description" content="Ensemble de 4 boules de Noël gravées au laser à Mont-Laurier. 15,00 $ CAD.">
+<meta name="theme-color" content="#0f0f0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
+</head>
+<body>
+<div class="langs"><button type="button" data-lang="fr" onclick="setLang('fr')">FR</button><button type="button" data-lang="en" onclick="setLang('en')">EN</button><button type="button" data-lang="es" onclick="setLang('es')">ES</button></div>
+<div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
+<header>
+<div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
+<div class="nav"><a href="/" data-i18n="sec_phys">Créations en bois à commander</a><a href="/fichiers.html" data-i18n="sec_dig">Fichiers de découpe laser</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a></div>
+</header>
+<div class="container noel" id="noel">
+<a class="back" href="/#noel" data-i18n="nav_shop">Boutique</a>
+<div class="noel-card">
+<div class="noel-img"><img src="/img/boules-noel.jpg?v=6" width="1005" height="290" alt="Boules de Noël gravées au laser : belle année, Lâche pas la patate, Au chalet et Un p’tit café" data-i18n-alt="noel_alt"><div class="noel-cap" data-i18n="noel_cap">Aperçu des motifs (rendu, pas une photo)</div></div>
+<div class="noel-body">
+<div class="noel-tag" data-i18n="noel_tag">Temps des Fêtes 2026</div>
+<h2 data-i18n="noel_t">Boules de Noël gravées – ensemble de 4 expressions</h2>
+<p data-i18n="noel_d">Gravées au laser à Mont-Laurier : « belle année », « Lâche pas la patate », « Au chalet » et « Un p’tit café ». Local et écologique : idéal pour décorer le sapin ou offrir.</p>
+<div class="price">15,00 $ CAD</div>
+<p class="noel-dl" data-i18n="noel_dl">Commandez d’ici le 10 décembre pour le ramassage avant Noël (envoi postal : d’ici le 5 décembre).</p>
+<div class="hero-actions">
+<button class="btn" type="button" onclick="openSimple('noel')" data-i18n="buy">Acheter</button>
+</div>
+<div class="hint" data-i18n="noel_pay">Paiement sécurisé par Stripe.</div>
+</div></div></div>
+<div class="overlay" id="overlay2" onclick="if(event.target===this)closeSimple()">
+<div class="modal">
+<h3 id="sTitle">Commander</h3><div class="sub" id="sSub"></div>
+<label for="ship2" data-i18n="l_ship">Livraison</label>
+<select id="ship2"></select>
+<label for="cmt2" data-i18n="l_cmt">Commentaire ou question (facultatif)</label>
+<textarea id="cmt2" rows="2" maxlength="500"></textarea>
+<div id="cmtMail2" style="display:none"><input id="cmtEmail2" type="email" data-i18n-placeholder="ph_email" placeholder="Courriel"></div>
+<div class="hint" data-i18n="cmt_note">Une commande avec un commentaire est confirmée par courriel avant le paiement.</div>
+<div class="row"><button class="btn secondary" type="button" onclick="closeSimple()" data-i18n="cancel">Annuler</button><button class="btn" type="button" onclick="goSimple()" data-i18n="pay">Payer</button></div>
+</div></div>
+<footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="https://www.youtube.com/@multilasercreations" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/multilasercreat/" target="_blank" rel="noopener">Instagram</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
+<script src="/shop.js"></script>
+</body>
+</html>
