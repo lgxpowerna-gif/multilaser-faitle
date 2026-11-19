@@ -82,3 +82,7 @@ textarea{min-height:60px;resize:vertical}
 .hero-actions{display:flex;flex-wrap:wrap;gap:10px}
 .back{display:inline-block;margin:0 0 14px;color:#ccc;font-size:.9rem}
 @media (max-width:760px){.noel-card{grid-template-columns:1fr}}
+
+.cart-count{display:inline-block;min-width:1.15rem;margin-left:4px;padding:0 5px;border-radius:999px;background:#fff;color:#111;font-size:.75rem;font-weight:700;line-height:1.3;vertical-align:middle}
+.cart-count[hidden]{display:none}
+#navCart{white-space:nowrap}

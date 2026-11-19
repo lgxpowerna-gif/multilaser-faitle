@@ -76,5 +76,11 @@ async function sendPending(){
 }
 sendPending();
 </script>
+
+<script src="/cart.js"></script>
+<script>
+if (/[?&]session_id=cs_/.test(location.search) && window.MLCart) MLCart.clear();
+</script>
+
 </body>
 </html>

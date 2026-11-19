@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<title>Panier – Multilaser Créations</title>
+<meta name="description" content="Panier MultiLaser Créations. Ramassage à Mont-Laurier ou envoi au Canada selon la province.">
+<meta name="theme-color" content="#0f0f0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
+<style>
+.cart-list{display:grid;gap:12px;margin:0 0 24px}
+.cart-line{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;background:#161616;border:1px solid #2a2a2a;border-radius:12px;padding:14px 16px}
+.cart-line h2{font-size:1rem;margin:0 0 4px}
+.cart-line .meta{color:#888;font-size:.85rem}
+.cart-line .qty{width:4.2rem;text-align:center}
+.cart-line .line-price{font-weight:600;min-width:5.5rem;text-align:right}
+.cart-line button.link{background:none;border:0;color:#888;cursor:pointer;font:inherit;text-decoration:underline;padding:0}
+.cart-empty{color:#999;margin:20px 0 32px}
+.ship-box{background:#161616;border:1px solid #2a2a2a;border-radius:12px;padding:18px;margin-bottom:20px}
+.ship-box label{margin-top:0}
+.totals{display:grid;gap:6px;margin:16px 0 20px;max-width:320px;margin-left:auto}
+.totals div{display:flex;justify-content:space-between;gap:16px}
+.totals .grand{font-size:1.15rem;font-weight:700;border-top:1px solid #333;padding-top:8px;margin-top:4px}
+.err{color:#e88;margin:10px 0;display:none}
+.hint a{color:#ccc}
+</style>
+</head>
+<body>
+<div class="langs"><button type="button" data-lang="fr" onclick="setLang('fr')">FR</button><button type="button" data-lang="en" onclick="setLang('en')">EN</button><button type="button" data-lang="es" onclick="setLang('es')">ES</button></div>
+<div class="welcome-banner"><img class="logo" src="https://pub-4bf7dcdcddf74de88d568e3746f0fba4.r2.dev/logo.jpg" alt="Multilaser Créations"></div>
+<header>
+<div class="location" data-i18n="tagline">Revalorisation • Bois récupéré • Fait au Québec</div>
+<div class="nav"><a href="/" data-i18n="sec_phys">Créations en bois à commander</a><a href="/fichiers.html" data-i18n="sec_dig">Fichiers de découpe laser</a><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="/panier.html" id="navCart" data-i18n="nav_cart">Panier <span id="cartCount" class="cart-count" hidden></span></a></div>
+</header>
+<div class="container">
+<h1 class="sec-title" data-i18n="cart_t">Panier</h1>
+<div id="cartEmpty" class="cart-empty" hidden data-i18n="cart_empty">Ton panier est vide.</div>
+<div id="cartWrap" hidden>
+<div id="cartList" class="cart-list"></div>
+<div class="ship-box">
+<label data-i18n="l_ship">Livraison</label>
+<select id="method">
+<option value="pickup" data-i18n="ship_pk">Ramassage Mont-Laurier — 0 $</option>
+<option value="shipping" data-i18n="cart_ship_ca">Envoi au Canada (selon la province)</option>
+</select>
+<div id="provWrap" style="display:none;margin-top:12px">
+<label for="province" data-i18n="cart_prov">Province ou territoire</label>
+<select id="province"></select>
+<p class="hint" data-i18n="cart_intl">États-Unis et ailleurs : <a href="mailto:multilaser@faitle.net">multilaser@faitle.net</a></p>
+</div>
+</div>
+<div class="totals">
+<div><span data-i18n="cart_sub">Sous-total</span><span id="subtotal"></span></div>
+<div><span data-i18n="cart_ship">Livraison</span><span id="shipAmt"></span></div>
+<div class="grand"><span data-i18n="cart_total">Total</span><span id="total"></span></div>
+</div>
+<p class="err" id="cartErr"></p>
+<button class="btn" type="button" id="payBtn" data-i18n="cart_pay">Payer avec Stripe</button>
+</div>
+<p class="note" data-i18n="cart_note">Le tarif d’envoi suit la province : un article lourd (affiche ou boîte 6-pack) au tarif de la zone, chaque article lourd de plus en supplément. Les trousses de boules ou de gnomes en enveloppe : 5,30 $ seules, ou 0 $ avec un article lourd.</p>
+</div>
+<footer><a href="/showroom.html" data-i18n="nav_show">Showroom</a><a href="mailto:multilaser@faitle.net" data-i18n="contact">Contact</a></footer>
+<script src="/shop.js"></script>
+<script src="/cart.js"></script>
+<script type="module">
+import { CATALOG, PROVINCES, computeShipping, itemsSubtotalCents } from '/shipping-config.js';
+
+const cad = (cents) => (cents / 100).toFixed(2).replace('.', ',') + ' $';
+const methodEl = document.getElementById('method');
+const provEl = document.getElementById('province');
+const provWrap = document.getElementById('provWrap');
+const errEl = document.getElementById('cartErr');
+
+const provSel = document.getElementById('province');
+Object.entries(PROVINCES).forEach(([code, z]) => {
+  const o = document.createElement('option');
+  o.value = code;
+  o.textContent = z.name;
+  provSel.appendChild(o);
+});
+provSel.value = 'QC';
+
+function showErr(msg) {
+  errEl.textContent = msg || '';
+  errEl.style.display = msg ? 'block' : 'none';
+}
+
+function render() {
+  const items = MLCart.load();
+  const empty = items.length === 0;
+  document.getElementById('cartEmpty').hidden = !empty;
+  document.getElementById('cartWrap').hidden = empty;
+  if (empty) return;
+
+  const list = document.getElementById('cartList');
+  list.innerHTML = '';
+  items.forEach((line, i) => {
+    const p = CATALOG[line.id];
+    if (!p) return;
+    const div = document.createElement('div');
+    div.className = 'cart-line';
+    const meta = [line.meta?.texte, line.meta?.shape, line.meta?.fonte, line.meta?.taille].filter(Boolean).join(' · ');
+    div.innerHTML = `<div><h2></h2><div class="meta"></div><button type="button" class="link" data-i18n="cart_remove">Retirer</button></div>
+      <input class="qty" type="number" min="1" max="20" value="${line.qty}">
+      <div class="line-price">${cad(p.priceCents * line.qty)}</div>`;
+    div.querySelector('h2').textContent = p.title;
+    div.querySelector('.meta').textContent = meta;
+    div.querySelector('button').addEventListener('click', () => { MLCart.remove(i); render(); });
+    div.querySelector('.qty').addEventListener('change', (e) => {
+      MLCart.setQty(i, parseInt(e.target.value, 10) || 1);
+      render();
+    });
+    list.appendChild(div);
+  });
+
+  const method = methodEl.value;
+  provWrap.style.display = method === 'shipping' ? 'block' : 'none';
+  const ship = computeShipping(items, method, provEl.value);
+  const sub = itemsSubtotalCents(items);
+  document.getElementById('subtotal').textContent = cad(sub);
+  if (ship.ok) {
+    document.getElementById('shipAmt').textContent = cad(ship.shippingCents);
+    document.getElementById('total').textContent = cad(sub + ship.shippingCents);
+    showErr('');
+    document.getElementById('payBtn').disabled = false;
+  } else {
+    document.getElementById('shipAmt').textContent = '—';
+    document.getElementById('total').textContent = cad(sub);
+    showErr(ship.error);
+    document.getElementById('payBtn').disabled = true;
+  }
+}
+
+methodEl.addEventListener('change', render);
+provEl.addEventListener('change', render);
+
+document.getElementById('payBtn').addEventListener('click', async () => {
+  showErr('');
+  const btn = document.getElementById('payBtn');
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: MLCart.load(),
+        method: methodEl.value,
+        province: provEl.value,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.url) {
+      showErr(data.error || 'Le paiement n’a pas pu démarrer.');
+      btn.disabled = false;
+      return;
+    }
+    window.location.href = data.url;
+  } catch {
+    showErr('Le paiement n’a pas pu démarrer.');
+    btn.disabled = false;
+  }
+});
+
+render();
+</script>
+</body>
+</html>
