@@ -6,9 +6,8 @@
 // arrondis au 0,99 $ supérieur. Les taxes au comptoir ne sont pas incluses
 // (souvent récupérables si l'entreprise est inscrite).
 //
-// Affiches (palette) : poids provisoire 5 lb / 2,268 kg, boîte 40 × 25 × 10 cm
-// (le poids réel sera mis à jour quand il sera pesé).
-// Boîte 6-pack : estimation — voir PACKAGES.box6pack ci-dessous.
+// Affiches (palette) : poids réel max 4 lb / 1,81 kg emballées, boîte 40 × 25 × 10 cm.
+// Boîte 6-pack : estimation inchangée — voir PACKAGES.box6pack ci-dessous.
 
 export const SHIPPING_META = {
   quotedOn: '2026-11-19',
@@ -20,11 +19,10 @@ export const SHIPPING_META = {
 };
 
 // Poids et dimensions utilisés pour les cotes Postes Canada.
-// posterWeightKg est un espace réservé : à remplacer par le poids réel pesé.
 export const PACKAGES = {
   poster: {
-    weightKg: 2.268, // PLACEHOLDER: 5 lb, en attendant le poids réel des affiches palette
-    weightNote: 'Poids provisoire 5 lb (2,268 kg). À remplacer par le poids réel.',
+    weightKg: 1.81, // max 4 lb emballées, confirmé le 19 nov. 2026
+    weightNote: 'Poids réel maximum 4 lb (1,81 kg) par affiche, emballée.',
     lengthCm: 40,
     widthCm: 25,
     heightCm: 10,
@@ -48,19 +46,19 @@ export const PACKAGES = {
 
 // firstPoster / firstBox / addonHeavy : dollars CAD, avant taxes.
 export const PROVINCES = {
-  QC: { name: 'Québec', sample: 'J1C 0T5 Sherbrooke', rateCode: 'C06', firstPoster: 24.99, firstBox: 23.99, addonHeavy: 2.99 },
-  ON: { name: 'Ontario', sample: 'M5V 2T6 Toronto', rateCode: 'G02', firstPoster: 22.99, firstBox: 22.99, addonHeavy: 3.99 },
-  NB: { name: 'Nouveau-Brunswick', sample: 'E3B 1B5 Fredericton', rateCode: 'G06', firstPoster: 29.99, firstBox: 27.99, addonHeavy: 5.99 },
-  NS: { name: 'Nouvelle-Écosse', sample: 'B3J 2K9 Halifax', rateCode: 'G05', firstPoster: 27.99, firstBox: 26.99, addonHeavy: 4.99 },
-  PE: { name: 'Île-du-Prince-Édouard', sample: 'C1A 4P3 Charlottetown', rateCode: 'G07', firstPoster: 29.99, firstBox: 27.99, addonHeavy: 5.99 },
-  NL: { name: 'Terre-Neuve-et-Labrador', sample: "A1C 1A1 St. John's", rateCode: 'M03', firstPoster: 31.99, firstBox: 30.99, addonHeavy: 4.99 },
-  MB: { name: 'Manitoba', sample: 'R3C 0A1 Winnipeg', rateCode: 'N02', firstPoster: 29.99, firstBox: 29.99, addonHeavy: 3.99 },
-  SK: { name: 'Saskatchewan', sample: 'S4P 3Y2 Regina', rateCode: 'N03', firstPoster: 30.99, firstBox: 29.99, addonHeavy: 5.99 },
-  AB: { name: 'Alberta', sample: 'T5J 0A7 Edmonton', rateCode: 'N05', firstPoster: 33.99, firstBox: 32.99, addonHeavy: 7.99 },
-  BC: { name: 'Colombie-Britannique', sample: 'V6B 1A1 Vancouver', rateCode: 'N05', firstPoster: 33.99, firstBox: 32.99, addonHeavy: 7.99 },
-  YT: { name: 'Yukon', sample: 'Y1A 1A1 Whitehorse', rateCode: 'S04', firstPoster: 33.99, firstBox: 30.99, addonHeavy: 6.99 },
-  NT: { name: 'Territoires du Nord-Ouest', sample: 'X1A 2P3 Yellowknife', rateCode: 'S04', firstPoster: 33.99, firstBox: 30.99, addonHeavy: 6.99 },
-  NU: { name: 'Nunavut', sample: 'X0A 0H0 Iqaluit', rateCode: 'T02', firstPoster: 45.99, firstBox: 34.99, addonHeavy: 21.99 },
+  QC: { name: 'Québec', sample: 'J1C 0T5 Sherbrooke', rateCode: 'C06', firstPoster: 23.99, firstBox: 23.99, addonHeavy: 1.99 },
+  ON: { name: 'Ontario', sample: 'M5V 2T6 Toronto', rateCode: 'G02', firstPoster: 22.99, firstBox: 22.99, addonHeavy: 2.99 },
+  NB: { name: 'Nouveau-Brunswick', sample: 'E3B 1B5 Fredericton', rateCode: 'G06', firstPoster: 28.99, firstBox: 27.99, addonHeavy: 3.99 },
+  NS: { name: 'Nouvelle-Écosse', sample: 'B3J 2K9 Halifax', rateCode: 'G05', firstPoster: 26.99, firstBox: 26.99, addonHeavy: 4.99 },
+  PE: { name: 'Île-du-Prince-Édouard', sample: 'C1A 4P3 Charlottetown', rateCode: 'G07', firstPoster: 28.99, firstBox: 27.99, addonHeavy: 3.99 },
+  NL: { name: 'Terre-Neuve-et-Labrador', sample: "A1C 1A1 St. John's", rateCode: 'M03', firstPoster: 31.99, firstBox: 30.99, addonHeavy: 3.99 },
+  MB: { name: 'Manitoba', sample: 'R3C 0A1 Winnipeg', rateCode: 'N02', firstPoster: 29.99, firstBox: 29.99, addonHeavy: 2.99 },
+  SK: { name: 'Saskatchewan', sample: 'S4P 3Y2 Regina', rateCode: 'N03', firstPoster: 29.99, firstBox: 29.99, addonHeavy: 3.99 },
+  AB: { name: 'Alberta', sample: 'T5J 0A7 Edmonton', rateCode: 'N05', firstPoster: 32.99, firstBox: 32.99, addonHeavy: 4.99 },
+  BC: { name: 'Colombie-Britannique', sample: 'V6B 1A1 Vancouver', rateCode: 'N05', firstPoster: 32.99, firstBox: 32.99, addonHeavy: 4.99 },
+  YT: { name: 'Yukon', sample: 'Y1A 1A1 Whitehorse', rateCode: 'S04', firstPoster: 32.99, firstBox: 30.99, addonHeavy: 5.99 },
+  NT: { name: 'Territoires du Nord-Ouest', sample: 'X1A 2P3 Yellowknife', rateCode: 'S04', firstPoster: 32.99, firstBox: 30.99, addonHeavy: 5.99 },
+  NU: { name: 'Nunavut', sample: 'X0A 0H0 Iqaluit', rateCode: 'T02', firstPoster: 39.99, firstBox: 34.99, addonHeavy: 18.99 },
 };
 
 export const CATALOG = {
