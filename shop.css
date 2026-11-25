@@ -86,3 +86,8 @@ textarea{min-height:60px;resize:vertical}
 .cart-count{display:inline-block;min-width:1.15rem;margin-left:4px;padding:0 5px;border-radius:999px;background:#fff;color:#111;font-size:.75rem;font-weight:700;line-height:1.3;vertical-align:middle}
 .cart-count[hidden]{display:none}
 #navCart{white-space:nowrap}
+
+.cart-notice{display:none;position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:70;background:#1c1c1c;border:1px solid #3a3a3a;color:#f0f0f0;border-radius:10px;padding:12px 16px;box-shadow:0 10px 28px rgba(0,0,0,.5);font-size:.95rem;align-items:center;gap:12px;max-width:min(440px,92vw)}
+.cart-notice.show{display:flex}
+.cart-notice a{color:#fff;font-weight:600;text-decoration:underline;white-space:nowrap}
+
