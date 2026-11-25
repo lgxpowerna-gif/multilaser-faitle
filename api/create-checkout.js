@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { CATALOG, computeShipping, itemsSubtotalCents } from '../shipping-config.js';
+import { CATALOG, computeShipping, itemsSubtotalCents, normalizeShippingAddress } from '../shipping-config.js';
 
 const json = (status, obj) => new Response(JSON.stringify(obj), {
   status,
@@ -65,6 +65,13 @@ export async function POST(request) {
   const ship = computeShipping(items, method, province);
   if (!ship.ok) return json(400, { error: ship.error });
 
+  let shippingAddr = null;
+  if (method === 'shipping') {
+    const addr = normalizeShippingAddress(body?.address, province);
+    if (!addr.ok) return json(400, { error: addr.error, code: addr.code });
+    shippingAddr = addr.value;
+  }
+
   const subtotal = itemsSubtotalCents(items);
   if (subtotal < 100) return json(400, { error: 'Le panier est vide.' });
 
@@ -94,23 +101,71 @@ export async function POST(request) {
     },
   }];
 
-  try {
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
-      line_items,
-      shipping_options,
-      shipping_address_collection: method === 'shipping' ? { allowed_countries: ['CA'] } : undefined,
-      success_url: `${origin}/merci.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/panier.html`,
-      metadata: {
-        source: 'panier',
-        method,
-        province: method === 'shipping' ? String(province).toUpperCase() : 'pickup',
-        shipping_cents: String(ship.shippingCents),
-        items: JSON.stringify(items.map((l) => ({ id: l.id, qty: l.qty, texte: l.meta.texte }))).slice(0, 450),
+  const metadata = {
+    source: 'panier',
+    method,
+    province: method === 'shipping' ? String(province).toUpperCase() : 'pickup',
+    shipping_cents: String(ship.shippingCents),
+    items: JSON.stringify(items.map((l) => ({ id: l.id, qty: l.qty, texte: l.meta.texte }))).slice(0, 450),
+  };
+  if (shippingAddr) {
+    metadata.ship_postal = shippingAddr.postal_code;
+    metadata.ship_city = shippingAddr.city.slice(0, 40);
+  }
+
+  const params = {
+    mode: 'payment',
+    line_items,
+    shipping_options,
+    success_url: `${origin}/merci.html?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${origin}/panier.html`,
+    metadata,
+    integration_identifier: `multilaser-panier-${randomId(8)}`,
+  };
+
+  // Stripe Checkout hébergé ne permet pas de limiter la province dans
+  // shipping_address_collection (pays seulement). On collecte l'adresse ici
+  // et on la verrouille sur le PaymentIntent, sans formulaire d'adresse Stripe.
+  if (shippingAddr) {
+    params.payment_intent_data = {
+      shipping: {
+        name: shippingAddr.name,
+        address: {
+          line1: shippingAddr.line1,
+          line2: shippingAddr.line2 || undefined,
+          city: shippingAddr.city,
+          state: shippingAddr.state,
+          postal_code: shippingAddr.postal_code,
+          country: 'CA',
+        },
       },
-      integration_identifier: `multilaser-panier-${randomId(8)}`,
-    });
+    };
+  }
+
+  try {
+    let session;
+    try {
+      session = await stripe.checkout.sessions.create(params);
+    } catch (err) {
+      // Si Stripe exige shipping_address_collection avec shipping_options,
+      // on met le même tarif d'envoi en ligne d'article (montants inchangés).
+      const msg = String(err && err.message || '');
+      if (!shippingAddr || !/shipping_address_collection|shipping address/i.test(msg)) throw err;
+      const fallback = { ...params };
+      delete fallback.shipping_options;
+      fallback.line_items = [
+        ...line_items,
+        {
+          quantity: 1,
+          price_data: {
+            currency: 'cad',
+            unit_amount: ship.shippingCents,
+            product_data: { name: ship.label.slice(0, 120) },
+          },
+        },
+      ];
+      session = await stripe.checkout.sessions.create(fallback);
+    }
     if (!session.url) return json(500, { error: 'Stripe n’a pas renvoyé d’adresse de paiement.' });
     return json(200, { url: session.url });
   } catch (err) {

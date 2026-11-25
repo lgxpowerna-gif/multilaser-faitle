@@ -140,3 +140,71 @@ export function itemsSubtotalCents(items) {
   }
   return sum;
 }
+
+// Première lettre (ou FSA X0A/X0B/X0C) du code postal canadien → province.
+const POSTAL_PROVINCE = {
+  A: 'NL', B: 'NS', C: 'PE', E: 'NB',
+  G: 'QC', H: 'QC', J: 'QC',
+  K: 'ON', L: 'ON', M: 'ON', N: 'ON', P: 'ON',
+  R: 'MB', S: 'SK', T: 'AB', V: 'BC', Y: 'YT',
+};
+
+export function compactPostal(raw) {
+  return String(raw || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+export function formatPostal(raw) {
+  const c = compactPostal(raw);
+  if (c.length !== 6) return c;
+  return `${c.slice(0, 3)} ${c.slice(3)}`;
+}
+
+export function provinceFromPostal(raw) {
+  const c = compactPostal(raw);
+  if (!/^[ABCEGHJ-NPRSTVXY]\d[A-Z]\d[A-Z]\d$/.test(c)) return null;
+  if (c[0] === 'X') {
+    const fsa = c.slice(0, 3);
+    return (fsa === 'X0A' || fsa === 'X0B' || fsa === 'X0C') ? 'NU' : 'NT';
+  }
+  return POSTAL_PROVINCE[c[0]] || null;
+}
+
+/**
+ * @param {object} raw
+ * @param {string} province code de 2 lettres déjà choisi pour le tarif
+ * @returns {{ ok: true, value: object } | { ok: false, error: string, code: string }}
+ */
+export function normalizeShippingAddress(raw, province) {
+  const code = String(province || '').toUpperCase();
+  if (!PROVINCES[code]) {
+    return { ok: false, code: 'cart_need_addr', error: 'Choisis une province ou un territoire du Canada.' };
+  }
+  const addr = raw && typeof raw === 'object' ? raw : {};
+  const name = String(addr.name || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+  const line1 = String(addr.line1 || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+  const line2 = String(addr.line2 || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+  const city = String(addr.city || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+  const postal = formatPostal(addr.postal || addr.postal_code || '');
+  if (name.length < 2 || line1.length < 3 || city.length < 2 || !postal) {
+    return { ok: false, code: 'cart_need_addr', error: 'Indique une adresse complète au Canada dans la province choisie.' };
+  }
+  const fromPostal = provinceFromPostal(postal);
+  if (!fromPostal) {
+    return { ok: false, code: 'cart_need_addr', error: 'Indique un code postal canadien valide.' };
+  }
+  if (fromPostal !== code) {
+    return { ok: false, code: 'cart_postal_prov', error: 'Le code postal ne correspond pas à la province choisie.' };
+  }
+  return {
+    ok: true,
+    value: {
+      name,
+      line1,
+      line2,
+      city,
+      state: code,
+      postal_code: postal,
+      country: 'CA',
+    },
+  };
+}

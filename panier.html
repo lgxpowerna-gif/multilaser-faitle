@@ -53,6 +53,20 @@
 <div id="provWrap" style="display:none;margin-top:12px">
 <label for="province" data-i18n="cart_prov">Province ou territoire</label>
 <select id="province"></select>
+<p class="hint" data-i18n="cart_addr_note">Le tarif d’envoi est celui de la province choisie. L’adresse doit être dans cette province.</p>
+<div id="addrWrap" style="margin-top:14px">
+<p class="hint" style="margin-bottom:8px;font-weight:600" data-i18n="cart_ship_to">Adresse d’envoi</p>
+<label for="shipName" data-i18n="cart_name">Nom complet</label>
+<input id="shipName" type="text" autocomplete="name" maxlength="80">
+<label for="shipLine1" data-i18n="cart_addr">Adresse</label>
+<input id="shipLine1" type="text" autocomplete="address-line1" maxlength="80">
+<label for="shipLine2" data-i18n="cart_addr2">Appartement, bureau (facultatif)</label>
+<input id="shipLine2" type="text" autocomplete="address-line2" maxlength="80">
+<label for="shipCity" data-i18n="cart_city">Ville</label>
+<input id="shipCity" type="text" autocomplete="address-level2" maxlength="60">
+<label for="shipPostal" data-i18n="cart_postal">Code postal</label>
+<input id="shipPostal" type="text" autocomplete="postal-code" maxlength="8" placeholder="A1A 1A1">
+</div>
 <p class="hint" data-i18n="cart_intl">États-Unis et ailleurs : <a href="mailto:multilaser@faitle.net">multilaser@faitle.net</a></p>
 </div>
 </div>
@@ -70,7 +84,7 @@
 <script src="/shop.js"></script>
 <script src="/cart.js"></script>
 <script type="module">
-import { CATALOG, PROVINCES, computeShipping, itemsSubtotalCents } from '/shipping-config.js';
+import { CATALOG, PROVINCES, computeShipping, itemsSubtotalCents, normalizeShippingAddress } from '/shipping-config.js';
 
 const cad = (cents) => (cents / 100).toFixed(2).replace('.', ',') + ' $';
 const methodEl = document.getElementById('method');
@@ -141,9 +155,29 @@ function render() {
 methodEl.addEventListener('change', render);
 provEl.addEventListener('change', render);
 
+function readAddress() {
+  return {
+    name: document.getElementById('shipName').value,
+    line1: document.getElementById('shipLine1').value,
+    line2: document.getElementById('shipLine2').value,
+    city: document.getElementById('shipCity').value,
+    postal: document.getElementById('shipPostal').value,
+  };
+}
+
 document.getElementById('payBtn').addEventListener('click', async () => {
   showErr('');
   const btn = document.getElementById('payBtn');
+  const method = methodEl.value;
+  let address = null;
+  if (method === 'shipping') {
+    const checked = normalizeShippingAddress(readAddress(), provEl.value);
+    if (!checked.ok) {
+      showErr((window.t ? window.t(checked.code) : "") || checked.error);
+      return;
+    }
+    address = checked.value;
+  }
   btn.disabled = true;
   try {
     const res = await fetch('/api/create-checkout', {
@@ -151,13 +185,14 @@ document.getElementById('payBtn').addEventListener('click', async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         items: MLCart.load(),
-        method: methodEl.value,
+        method,
         province: provEl.value,
+        address,
       }),
     });
     const data = await res.json();
     if (!res.ok || !data.url) {
-      showErr(data.error || 'Le paiement n’a pas pu démarrer.');
+      showErr((data.code && window.t ? window.t(data.code) : "") || data.error || 'Le paiement n’a pas pu démarrer.');
       btn.disabled = false;
       return;
     }
